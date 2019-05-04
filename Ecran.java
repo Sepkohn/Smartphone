@@ -34,7 +34,7 @@ public class Ecran extends JFrame{
 		add(south, BorderLayout.SOUTH);
 		add(centre, BorderLayout.CENTER);
 		
-		
+	// test commentaire	
 		
 		
 	}
