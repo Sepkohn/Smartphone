@@ -1,8 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
 
-import javafx.scene.layout.Background;
-
 public class Ecran extends JFrame{
 	
 	JButton cancel = new JButton("O");
@@ -34,6 +32,8 @@ public class Ecran extends JFrame{
 		add(south, BorderLayout.SOUTH);
 		add(centre, BorderLayout.CENTER);
 		
+		addActionListener(new Ecouteur_Galerie());
+		addActionListener(new Ecouteur_Contact());
 		
 		
 	}
