@@ -17,7 +17,7 @@ public class Ecran extends JFrame{
 		
 		
 		south.add(cancel);
-		south.add(undo, BorderLayout.LINE_END);
+		south.add(undo);
 		
 		centre.add(galerie);
 		centre.add(contact);
@@ -33,10 +33,6 @@ public class Ecran extends JFrame{
 		
 		add(south, BorderLayout.SOUTH);
 		add(centre, BorderLayout.CENTER);
-		
-	// test commentaire
-		// test commentaire 2
-		//  test commentaire 3
 		
 		
 		
