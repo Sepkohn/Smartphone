@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.MouseListener;
+
 import javax.swing.*;
 
 public class Ecran extends JFrame{
@@ -32,8 +34,10 @@ public class Ecran extends JFrame{
 		add(south, BorderLayout.SOUTH);
 		add(centre, BorderLayout.CENTER);
 		
-		addActionListener(new Ecouteur_Galerie());
-		addActionListener(new Ecouteur_Contact());
+	
+		galerie.addMouseListener(new Ecouteur_Galerie(this));
+		
+		//addActionListener(new Ecouteur_Contact());
 		
 		
 	}
