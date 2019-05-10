@@ -36,8 +36,8 @@ public class Ecran extends JFrame{
 		
 	
 		galerie.addMouseListener(new Ecouteur_Galerie(this));
-		
-		//addActionListener(new Ecouteur_Contact());
+		contact.addMouseListener(new Ecouteur_Contact());
+
 		
 		
 	}

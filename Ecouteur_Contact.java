@@ -1,43 +1,44 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
-public class Ecouteur_Contact extends JFrame {
+public class Ecouteur_Contact extends MouseAdapter {
 
-    private JButton ButtonAdd = new JButton("Ajouter");
-    private JButton ButtonClose = new JButton("Fermer");
-    private JPanel panel_south = new JPanel();
+    private JTable tableau;
+    private JButton change = new JButton("Changer la taille");
+    private JButton retablir = new JButton("Rétablir");
 
-
-    public Button() {
-
-        //Ecouteur ecouteur = new Ecouteur() ;
-
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        // ButtonAdd.addActionListener();
-        // ButtonAdd.setActionCommand("toto");
-
-        panel_south.add(ButtonAdd);
-        panel_south.add(ButtonClose);
-
-        add(panel_south, BorderLayout.SOUTH);
+    // essayer de mettre un tableau de valeurs pour avoir un menu déroulant avec 3 colonnes
+    //on doit avoir le nom, prenom et numero de contact
 
 
-        ButtonAdd.addActionListener(new Ecouteur_1());
-
-        pack();
+    public Ecouteur_Contact() {
 
 
     }
+
+
+
+    @Override
+    public void mouseClicked(MouseEvent event){
+
+        JFrame Window = new JFrame();
+        Window.setVisible(true);
+        Window.setSize(500,900);
+
+    }
+
+
+
 
     //public class Ecouteur_1 implements ActionListener {
 
       //  if()
 
 
-    }
 
-
-return Ecouteur_Contact ;
 }
