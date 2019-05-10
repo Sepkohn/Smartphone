@@ -31,15 +31,13 @@ public class Ecouteur_Contact extends JFrame {
 
     }
 
-    public class Ecouteur_1 implements ActionListener {
+    //public class Ecouteur_1 implements ActionListener {
 
-        if()
+      //  if()
 
 
     }
 
 
-
-
-
+return Ecouteur_Contact ;
 }
