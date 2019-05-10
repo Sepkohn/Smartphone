@@ -17,3 +17,9 @@ Kevin le 10.05.2019
  - https://openclassrooms.com/fr/courses/26832-apprenez-a-programmer-en-java/25335-gerez-les-interfaces-de-tableaux (tableau pour les contacts)
 
 Valentin le 10.05.2019
+ - Création de la classe Ecran_Ecouteur_Galerie pour le bouton +.
+ - Recherches et tests d'insertions d'image en variable.
+ - Création d'un dossier pour les images.
+ - Creation et suppression de la classe Galerie pour divers tests.
+ - Test de création de méthodes d'ajouts d'image et de panel.
+ 
