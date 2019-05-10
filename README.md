@@ -14,5 +14,6 @@ Kevin le 10.05.2019
  - création de l'écouteur_contact et ajout des divers méthodes dans la nouvelle classe (JFrame, etc...)
  - idee de mettre cette liste pour remplir l'agenda de contacts dans l'application :https://www.pokepedia.fr/Liste_des_Pok%C3%A9mon_dans_l%27ordre_du_Pok%C3%A9dex_National
  - ajout des frames et boutons pour l'application "contacts".
+ - https://openclassrooms.com/fr/courses/26832-apprenez-a-programmer-en-java/25335-gerez-les-interfaces-de-tableaux (tableau pour les contacts)
 
 Valentin le 10.05.2019
