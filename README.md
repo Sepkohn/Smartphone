@@ -10,4 +10,5 @@ Valentin, le 04.05.2019
  - création  de la branche "dev" dans GitHub et test de synchronisation avec Atom et GitHub for desktop
  - divers test de synchronisation entre fichiers java
 
- 
+Valentin et Kevin le 10.05.2019
+ - création de l'écouteur_contact et ajout des divers méthodes dans la nouvelle classe (JFrame, etc...)
