@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.JTableHeader;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -40,9 +42,10 @@ public class Ecouteur_Contact extends MouseAdapter {
         JPanel Panel_END = new JPanel () ; 
         JPanel Panel_Center = new JPanel() ; 
         
-        JTable Table_Contact = new JTable(10, 3);
+        JTable Table_Contact = new JTable(40, 3);
+
         
-        
+       
         Window.add(Panel_START, BorderLayout.PAGE_START) ;
         Panel_START.add(Button_Add); 
         Panel_START.add(Button_Remove) ; 
@@ -50,9 +53,13 @@ public class Ecouteur_Contact extends MouseAdapter {
         Window.add(Panel_END, BorderLayout.PAGE_END) ; 
         Panel_END.add(text) ;
         
+        
         Window.add(Panel_Center, BorderLayout.CENTER);
         Panel_Center.add(Table_Contact) ; 
-        Table_Contact.setSize(300, 300) ;        
+        Table_Contact.addRowSelectionInterval(0,0) ;  
+        
+    
+        
         
         
         Button_Add.setVisible(true);
