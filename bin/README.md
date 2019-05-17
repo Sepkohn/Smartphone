@@ -22,4 +22,8 @@ Valentin le 10.05.2019
  - Création d'un dossier pour les images.
  - Creation et suppression de la classe Galerie pour divers tests.
  - Test de création de méthodes d'ajouts d'image et de panel.
- 
+
+ Kevin le 17.05.2019
+ -  Test pour mettre une jtable dans l'app contact
+ -  Rajouté encore quelques boutons dans l'application pour ajouter et supprimer des contacts (test encore à faire avec l'affichage tableau)
+ - Mettre une app de plus ? : http://esus.com/creating-a-jtable-with-row-headers/ (à voir...)

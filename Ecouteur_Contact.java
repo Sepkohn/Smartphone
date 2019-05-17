@@ -56,7 +56,8 @@ public class Ecouteur_Contact extends MouseAdapter {
         
         Window.add(Panel_Center, BorderLayout.CENTER);
         Panel_Center.add(Table_Contact) ; 
-        Table_Contact.addRowSelectionInterval(0,0) ;  
+        
+        //Table_Contact.addRowSelectionInterval(0,0) ;  
         
     
         
