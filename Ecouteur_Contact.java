@@ -6,11 +6,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 
+
 public class Ecouteur_Contact extends MouseAdapter {
 
-    private JTable tableau;
     private JButton change = new JButton("Changer la taille");
     private JButton retablir = new JButton("Rétablir");
+    
 
     // essayer de mettre un tableau de valeurs pour avoir un menu déroulant avec 3 colonnes
     //on doit avoir le nom, prenom et numero de contact
@@ -29,13 +30,42 @@ public class Ecouteur_Contact extends MouseAdapter {
         JFrame Window = new JFrame();
         Window.setVisible(true);
         Window.setSize(500,900);
-
+        Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+       
+        JButton Button_Add = new JButton("Ajouter un contact...") ; 
+        JButton Button_Remove = new JButton("Supprimer un contact...") ; 
+        JLabel text = new JLabel("Liste de Contacts") ; 
+        JPanel Panel_START = new JPanel();
+        JPanel Panel_END = new JPanel () ; 
+        JPanel Panel_Center = new JPanel() ; 
+        
+        JTable Table_Contact = new JTable(10, 3);
+        
+        
+        Window.add(Panel_START, BorderLayout.PAGE_START) ;
+        Panel_START.add(Button_Add); 
+        Panel_START.add(Button_Remove) ; 
+        
+        Window.add(Panel_END, BorderLayout.PAGE_END) ; 
+        Panel_END.add(text) ;
+        
+        Window.add(Panel_Center, BorderLayout.CENTER);
+        Panel_Center.add(Table_Contact) ; 
+        Table_Contact.setSize(300, 300) ;        
+        
+        
+        Button_Add.setVisible(true);
+        Button_Remove.setVisible(true);
+        
+        
+        
     }
 
 
 
 
-    //public class Ecouteur_1 implements ActionListener {
+ ///class Ecouteur_1 implements mouseClicked {
 
       //  if()
 
