@@ -1,9 +1,10 @@
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-public class Ecran extends JFrame{
+public class Ecran extends JFrame implements MouseListener {
 	
 	JButton cancel = new JButton("O");
 	JButton galerie = new JButton("Galerie");
@@ -12,8 +13,8 @@ public class Ecran extends JFrame{
 	
 	JPanel south = new JPanel();
 	JPanel centre = new JPanel();
-	
-	public Ecran () {
+
+	public Ecran() {
 		
 		
 		south.add(cancel);
@@ -36,11 +37,35 @@ public class Ecran extends JFrame{
 		
 	
 		galerie.addMouseListener(new Ecouteur_Galerie(this));
-		contact.addMouseListener(new Ecouteur_Contact());
+		contact.addMouseListener(new Ecouteur_Contact(this));
 
 		
 		
 	}
 
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
+	}
 }
