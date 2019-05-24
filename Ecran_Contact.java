@@ -1,4 +1,73 @@
+import javax.swing.*;
+import java.awt.*;
 
-public class Ecran_Contact {
 
-}
+public class Ecran_Contact extends JFrame {
+
+
+        JButton Button_Add = new JButton("Ajouter un contact...");
+        JButton Button_Remove = new JButton("Supprimer un contact...");
+        JLabel text = new JLabel("Liste de Contacts");
+        JPanel Panel_START = new JPanel();
+        JPanel Panel_END = new JPanel();
+        JPanel Panel_Center = new JPanel();
+        JPanel scrollBarPanel = new JPanel() ;
+        JButton Button_Back = new JButton("Retour");
+        JScrollPane Slider = new JScrollPane (Panel_Center) ;
+        //JFrame frame = new JFrame();
+
+
+    // object[] columns = {"Image", "Nom", "Prenom", "Numéro"} ;
+
+        JTable Table_Contact = new JTable(40, 4);
+
+        // a voir si on fait un header dans le tableau
+
+        //DefaultTableModel model = new DefaultTableModel() ;
+        //model.setColumnIdentifiers(colums);
+        // Table_Contact.setModel(model) ;
+
+
+    public Ecran_Contact() {
+
+        add(Panel_START, BorderLayout.NORTH);
+        Panel_START.setBackground(Color.BLACK);
+        Panel_START.add(Button_Add);
+        Panel_START.add(Button_Remove);
+
+        add(Panel_END, BorderLayout.SOUTH);
+        Panel_END.add(text);
+        add(Button_Back, BorderLayout.SOUTH);
+        Panel_END.setBackground(Color.BLACK);
+
+
+        // visuel app contact
+        add(Panel_Center, BorderLayout.CENTER);
+        Panel_Center.setBackground(Color.BLACK);
+        Panel_Center.add(Table_Contact);
+        Table_Contact.setGridColor(Color.WHITE);
+        Table_Contact.setBackground(Color.BLACK);
+        Table_Contact.setForeground(Color.WHITE);
+
+
+        //Button_Back.setActionCommand("close");
+        //Button pour revenir au main à faire
+
+        //slider, voir comment on peut faire la faonction de glissage
+        add(Slider, BorderLayout.EAST);
+
+        //Fonctions pour scroll le tableau
+        Slider.setHorizontalScrollBarPolicy(Slider.HORIZONTAL_SCROLLBAR_NEVER);
+        Slider.setVerticalScrollBarPolicy(Slider.VERTICAL_SCROLLBAR_AS_NEEDED);
+        Slider.setBounds(50, 30, 300, 50);
+        Panel_Center.add(Slider, BorderLayout.EAST);
+        //frame.pack();
+        //frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //frame.setVisible(true);
+        // champ reserve
+
+
+    }
+
+
+    }
