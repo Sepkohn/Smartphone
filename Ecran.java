@@ -1,8 +1,8 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.*;
+
 
 public class Ecran extends JFrame implements MouseListener {
 	
@@ -14,34 +14,41 @@ public class Ecran extends JFrame implements MouseListener {
 	JPanel south = new JPanel();
 	JPanel centre = new JPanel();
 
+
+
 	public Ecran() {
-		
-		
+
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 		south.add(cancel);
 		south.add(undo);
 		
 		centre.add(galerie);
 		centre.add(contact);
-		
-		//centre.setBackground(Color.GREEN);
+
+		//voir si on peut mettre un fond d'ecran...
 		centre.setOpaque(false);
-		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
+
+
 		setTitle("Smartphone");
 		
 		getContentPane().setBackground(Color.BLACK);
 		
 		add(south, BorderLayout.SOUTH);
 		add(centre, BorderLayout.CENTER);
-		
-	
+
+
+
 		galerie.addMouseListener(new Ecouteur_Galerie(this));
 		contact.addMouseListener(new Ecouteur_Contact(this));
 
-		
-		
+		//ajout de l'horloge dans l'écran principal (AMK)
+
+
+
 	}
+
+
 
 
 	@Override

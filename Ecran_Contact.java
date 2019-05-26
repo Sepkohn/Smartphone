@@ -1,31 +1,33 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class Ecran_Contact extends JFrame {
 
 
-        JButton Button_Add = new JButton("Ajouter un contact...");
-        JButton Button_Remove = new JButton("Supprimer un contact...");
-        JLabel text = new JLabel("Liste de Contacts");
-        JPanel Panel_START = new JPanel();
-        JPanel Panel_END = new JPanel();
-        JPanel Panel_Center = new JPanel();
-        JPanel scrollBarPanel = new JPanel() ;
-        JButton Button_Back = new JButton("Retour");
-        JScrollPane Slider = new JScrollPane (Panel_Center) ;
-        //JFrame frame = new JFrame();
+    JButton Button_Add = new JButton("Ajouter un contact...");
+    JButton Button_Remove = new JButton("Supprimer un contact...");
+    JLabel text = new JLabel("Liste de Contacts");
+    JPanel Panel_START = new JPanel();
+    JPanel Panel_END = new JPanel();
+    JPanel Panel_Center = new JPanel();
+    JPanel scrollBarPanel = new JPanel();
+    JButton Button_Back = new JButton("Retour");
+    JScrollPane Slider = new JScrollPane(Panel_Center);
+    //JFrame frame = new JFrame();
 
 
     // object[] columns = {"Image", "Nom", "Prenom", "Numéro"} ;
 
-        JTable Table_Contact = new JTable(40, 4);
+    JTable Table_Contact = new JTable(40, 4);
 
-        // a voir si on fait un header dans le tableau
+    // a voir si on fait un header dans le tableau
 
-        //DefaultTableModel model = new DefaultTableModel() ;
-        //model.setColumnIdentifiers(colums);
-        // Table_Contact.setModel(model) ;
+    //DefaultTableModel model = new DefaultTableModel() ;
+    //model.setColumnIdentifiers(colums);
+    // Table_Contact.setModel(model) ;
 
 
     public Ecran_Contact() {
@@ -35,11 +37,21 @@ public class Ecran_Contact extends JFrame {
         Panel_START.add(Button_Add);
         Panel_START.add(Button_Remove);
 
+
+        //button back : revenir à l'écran prinicpal -> OK
         add(Panel_END, BorderLayout.SOUTH);
         Panel_END.add(text);
         add(Button_Back, BorderLayout.SOUTH);
         Panel_END.setBackground(Color.BLACK);
+        Button_Back.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Ecran_Contact.this.dispose();
+                Ecran_Contact.this.setVisible(false);
+            }
+        });
 
         // visuel app contact
         add(Panel_Center, BorderLayout.CENTER);
@@ -50,8 +62,6 @@ public class Ecran_Contact extends JFrame {
         Table_Contact.setForeground(Color.WHITE);
 
 
-        //Button_Back.setActionCommand("close");
-        //Button pour revenir au main à faire
 
         //slider, voir comment on peut faire la faonction de glissage
         add(Slider, BorderLayout.EAST);
@@ -62,12 +72,13 @@ public class Ecran_Contact extends JFrame {
         Slider.setBounds(50, 30, 300, 50);
         Panel_Center.add(Slider, BorderLayout.EAST);
         //frame.pack();
-        //frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         //frame.setVisible(true);
         // champ reserve
 
 
+
     }
 
 
-    }
+}
