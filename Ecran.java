@@ -13,7 +13,7 @@ public class Ecran extends JFrame implements MouseListener {
 	
 	JPanel south = new JPanel();
 	JPanel centre = new JPanel();
-
+	JPanel north = new JPanel();
 
 
 	public Ecran() {
@@ -26,6 +26,8 @@ public class Ecran extends JFrame implements MouseListener {
 		centre.add(galerie);
 		centre.add(contact);
 
+
+
 		//voir si on peut mettre un fond d'ecran...
 		centre.setOpaque(false);
 
@@ -36,6 +38,7 @@ public class Ecran extends JFrame implements MouseListener {
 		
 		add(south, BorderLayout.SOUTH);
 		add(centre, BorderLayout.CENTER);
+		add(north, BorderLayout.NORTH);
 
 
 
