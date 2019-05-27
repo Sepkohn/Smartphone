@@ -13,7 +13,10 @@ public class Ecran extends JFrame implements MouseListener {
 	
 	JPanel south = new JPanel();
 	JPanel centre = new JPanel();
-	JPanel north = new JPanel();
+
+	//Horloge layout
+
+
 
 
 	public Ecran() {
@@ -38,7 +41,7 @@ public class Ecran extends JFrame implements MouseListener {
 		
 		add(south, BorderLayout.SOUTH);
 		add(centre, BorderLayout.CENTER);
-		add(north, BorderLayout.NORTH);
+
 
 
 
@@ -46,7 +49,6 @@ public class Ecran extends JFrame implements MouseListener {
 		contact.addMouseListener(new Ecouteur_Contact(this));
 
 		//ajout de l'horloge dans l'écran principal (AMK)
-
 
 
 	}

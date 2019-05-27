@@ -19,7 +19,7 @@ import java.awt.event.*;
 
 
         Ecran_Contact Ecran = new Ecran_Contact();
-        Ecran.setVisible (true); ;
+        Ecran.setVisible (true);
         Ecran.setSize(500, 900);
         Ecran.setLocationRelativeTo(Ecran);
         Ecran.setTitle("Contacts");
