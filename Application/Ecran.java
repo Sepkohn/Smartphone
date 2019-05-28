@@ -43,8 +43,6 @@ public class Ecran extends JFrame implements MouseListener {
 		add(centre, BorderLayout.CENTER);
 
 
-
-
 		galerie.addMouseListener(new Ecouteur_Galerie(this));
 		contact.addMouseListener(new Ecouteur_Contact(this));
 
@@ -52,8 +50,6 @@ public class Ecran extends JFrame implements MouseListener {
 
 
 	}
-
-
 
 
 	@Override
