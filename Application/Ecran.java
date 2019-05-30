@@ -14,9 +14,6 @@ public class Ecran extends JFrame implements MouseListener {
 	JPanel south = new JPanel();
 	JPanel centre = new JPanel();
 
-	//Horloge layout
-
-
 
 
 	public Ecran() {
