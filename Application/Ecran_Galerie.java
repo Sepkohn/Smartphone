@@ -31,9 +31,8 @@ public class Ecran_Galerie extends JFrame{
 	
 	
 	public Ecran_Galerie(ImageIcon image) {
-		
-		setLocation(700, 50);
-		setSize(500, 900);	
+
+		setSize(400, 800);
 	
 		
 	

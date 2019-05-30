@@ -22,8 +22,8 @@ public class AjoutImage extends JFrame{
 	public AjoutImage() {
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocation(700, 50);
-		setSize(500,900);
+
+		setSize(400,800);
 		
 		
 		south.add(ok);
@@ -46,7 +46,7 @@ public class AjoutImage extends JFrame{
 			
 			if(source == ok) {
 			
-			ImageIcon image = new ImageIcon(new ImageIcon(lien.getText()).getImage().getScaledInstance(225, 200, Image.SCALE_DEFAULT));
+			ImageIcon image = new ImageIcon(new ImageIcon(lien.getText()).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
 			
 			tableau = ajoutImage(tableau, image);
 			

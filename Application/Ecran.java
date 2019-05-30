@@ -1,10 +1,11 @@
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
 
 
-public class Ecran extends JFrame implements MouseListener {
+public class Ecran extends JFrame{
 	
 	JButton cancel = new JButton("O");
 	JButton galerie = new JButton("Galerie");
@@ -19,6 +20,7 @@ public class Ecran extends JFrame implements MouseListener {
 	public Ecran() {
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(400,800);
 
 		south.add(cancel);
 		south.add(undo);
@@ -48,29 +50,18 @@ public class Ecran extends JFrame implements MouseListener {
 
 	}
 
+	public class Ecouteur_Galerie extends MouseAdapter {
+		public Ecouteur_Galerie(Ecran ecran) {
+		}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
+		public void mouseClicked(MouseEvent e) {
+			Ecran_Galerie test = new Ecran_Galerie(null);
+			test.setVisible(true);
+			dispose();
+		}
 
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-
+		public Image ajouter(Image image) {
+			return image;
+		}
 	}
 }
