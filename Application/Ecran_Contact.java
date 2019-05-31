@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Ecran_Contact extends JFrame {
@@ -13,7 +15,7 @@ public class Ecran_Contact extends JFrame {
     JPanel Panel_START = new JPanel();
     JPanel Panel_END = new JPanel();
     JPanel Panel_Center = new JPanel();
-    JPanel scrollBarPanel = new JPanel();
+    JSlider slider = new JSlider (JSlider.VERTICAL);
     JButton Button_Back = new JButton("Retour");
     JScrollPane Slider = new JScrollPane(Panel_Center);
     //JFrame frame = new JFrame();
@@ -70,13 +72,29 @@ public class Ecran_Contact extends JFrame {
         Slider.setVerticalScrollBarPolicy(Slider.VERTICAL_SCROLLBAR_AS_NEEDED);
         Slider.setBounds(50, 30, 300, 50);
         Panel_Center.add(Slider, BorderLayout.EAST);
+
+        add(slider, BorderLayout.EAST) ;
+
+
+        Button_Add.addMouseListener(new Ecouteur_Ecran_Contact(this));
+
+
         //frame.pack();
 
         //frame.setVisible(true);
         // champ reserve
 
-
     }
 
+    public class Ecouteur_Ecran_Contact extends MouseAdapter {
 
+        public Ecouteur_Ecran_Contact(Ecran_Contact ecranContact ) {
+
+            setSize(400, 800);
+
+
+        }
+
+
+    }
 }
