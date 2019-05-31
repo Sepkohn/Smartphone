@@ -62,7 +62,6 @@ public class Ecran_Contact extends JFrame {
         Table_Contact.setForeground(Color.WHITE);
 
 
-
         //slider, voir comment on peut faire la faonction de glissage
         add(Slider, BorderLayout.EAST);
 
@@ -75,7 +74,6 @@ public class Ecran_Contact extends JFrame {
 
         //frame.setVisible(true);
         // champ reserve
-
 
 
     }
