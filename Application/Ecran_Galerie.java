@@ -3,6 +3,7 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -86,8 +87,9 @@ public class Ecran_Galerie extends JFrame {
                 dispose();
             }
             if (source == cancel) {
-
-                serialisation(AjoutImage.tableau);
+                if(AjoutImage.tableau != null) {
+                    serialisation(AjoutImage.tableau);
+                }
 
                 Ecran principal = new Ecran();
 
@@ -104,13 +106,19 @@ public class Ecran_Galerie extends JFrame {
 
     public void serialisation(ImageIcon[] tableau) {
 
-
         try {
             FileOutputStream out = new FileOutputStream("C:/temp/Smartphone/Images/save.ser");
             ObjectOutputStream oos = new ObjectOutputStream(out);
-            oos.writeObject(tableau);
+
+            for (int i = 0; i < tableau.length; i++) {
+                ImageIcon image = tableau[i];
+                String link = image.toString();
+                oos.writeObject(link + " ");
+            }
+
             oos.close();
         } catch (IOException e) {
+            System.out.println("erreur");
         }
     }
 

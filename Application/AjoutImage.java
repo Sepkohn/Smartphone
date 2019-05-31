@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class AjoutImage extends JFrame {
 
-    static ImageIcon[] tableau = new ImageIcon[1];
+    static ImageIcon[] tableau = new ImageIcon[0];
 
     JTextArea aide = new JTextArea("Insert image link");
 
