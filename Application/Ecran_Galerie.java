@@ -23,7 +23,7 @@ public class Ecran_Galerie extends JFrame {
     JPanel south = new JPanel();
 
 
-    public Ecran_Galerie(ImageIcon image) {
+    public Ecran_Galerie() {
 
         JPanel center = new JPanel();
         setSize(400, 800);
@@ -33,17 +33,7 @@ public class Ecran_Galerie extends JFrame {
             JLabel label = new JLabel(AjoutImage.tableau[i]);
             center.add(label);
         }
-	
-		
-	/*pikachu = new ImageIcon("C:/temp/Smartphone/Images/pika.jpg");
-	salameche = new ImageIcon("C:/temp/Smartphone/Images/sala.jpg");
-	dracofeu = new ImageIcon("C:/temp/Smartphone/Images/draco.jpg");
-		
-	south.add(new JLabel(pikachu));
-	south.add(new JLabel(salameche));
-	south.add(new JLabel(dracofeu));*/
 
-        //setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         add(plus, BorderLayout.NORTH);
        // setLayout(centerGrid);
@@ -53,7 +43,6 @@ public class Ecran_Galerie extends JFrame {
 
 
         add(deroulant, BorderLayout.EAST);
-        //add(south, BorderLayout.CENTER);
         add(cancel, BorderLayout.SOUTH);
 
         plus.addMouseListener(new Ecouteur_Ecran_Galerie(this));
@@ -74,7 +63,7 @@ public class Ecran_Galerie extends JFrame {
 
             for (int i = 0; i < tableau.length; i++) {
                 ImageIcon image = tableau[i];
-                String test = image.getDescription();
+                String test = image.toString();
                 oos.writeObject( test + " ");
             }
 

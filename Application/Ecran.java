@@ -56,14 +56,16 @@ public class Ecran extends JFrame {
         }
 
         public void mouseClicked(MouseEvent e) {
-            Ecran_Galerie test = new Ecran_Galerie(null);
+            Ecran_Galerie test = new Ecran_Galerie();
             test.setVisible(true);
             try {
                 AjoutImage.tableau = deserialisation();
             } catch (IOException ex) {
                 ex.printStackTrace();
+                System.out.println("Import Export exception");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
+                System.out.println("Classe non trouvée");
             }
             dispose();
         }

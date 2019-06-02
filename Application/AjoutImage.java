@@ -66,7 +66,7 @@ public class AjoutImage extends JFrame {
 
                 tableau = ajoutImage(tableau, image);
 
-                Ecran_Galerie miseAjour = new Ecran_Galerie(image);
+                Ecran_Galerie miseAjour = new Ecran_Galerie();
 
                 miseAjour.setVisible(true);
 
@@ -75,7 +75,7 @@ public class AjoutImage extends JFrame {
             }
             if (source == cancel) {
 
-                Ecran_Galerie miseAjour = new Ecran_Galerie(null);
+                Ecran_Galerie miseAjour = new Ecran_Galerie();
 
                 miseAjour.setVisible(true);
 
