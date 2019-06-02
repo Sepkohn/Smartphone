@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public class Ecran_Galerie extends JFrame {
 
-    JPanel center = new JPanel();
+
     JButton plus = new JButton("+");
     JButton cancel = new JButton("Cancel");
     JScrollBar deroulant = new JScrollBar();
@@ -25,9 +25,14 @@ public class Ecran_Galerie extends JFrame {
 
     public Ecran_Galerie(ImageIcon image) {
 
+        JPanel center = new JPanel();
         setSize(400, 800);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		
+        for(int i = 0; i<AjoutImage.tableau.length;i++) {
+            JLabel label = new JLabel(AjoutImage.tableau[i]);
+            center.add(label);
+        }
 	
 		
 	/*pikachu = new ImageIcon("C:/temp/Smartphone/Images/pika.jpg");
@@ -43,7 +48,7 @@ public class Ecran_Galerie extends JFrame {
         add(plus, BorderLayout.NORTH);
        // setLayout(centerGrid);
         //centerGrid.addLayoutComponent(null, new JLabel(image));
-        center.add(new JLabel(image));
+        //center.add(new JLabel(image));
         add(center, BorderLayout.CENTER);
 
 
@@ -69,8 +74,8 @@ public class Ecran_Galerie extends JFrame {
 
             for (int i = 0; i < tableau.length; i++) {
                 ImageIcon image = tableau[i];
-                String link = image.toString();
-                oos.writeObject(link + " ");
+                String test = image.getDescription();
+                oos.writeObject( test + " ");
             }
 
             oos.close();

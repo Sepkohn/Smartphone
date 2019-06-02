@@ -58,13 +58,13 @@ public class Ecran extends JFrame {
         public void mouseClicked(MouseEvent e) {
             Ecran_Galerie test = new Ecran_Galerie(null);
             test.setVisible(true);
-            /*try {
-                deserialisation();
+            try {
+                AjoutImage.tableau = deserialisation();
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
-            }*/
+            }
             dispose();
         }
 
@@ -73,31 +73,30 @@ public class Ecran extends JFrame {
         }
     }
 
-    public void deserialisation () throws IOException, ClassNotFoundException {
+    public ImageIcon[] deserialisation () throws IOException, ClassNotFoundException {
         ImageIcon[] newTableau = new ImageIcon[0];
         FileInputStream fis = null;
         try {
-           // fis = new FileInputStream("C:/temp/Smartphone/Out/production/Smartphone/Images/save.ser");
+            // fis = new FileInputStream("C:/temp/Smartphone/Out/production/Smartphone/Images/save.ser");
             fis = new FileInputStream("C:/temp/Smartphone/Images/save.ser");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("fichier pas trouvé");
         }
-        if(fis!=null) {
+        if (fis != null) {
             ObjectInputStream ois = new ObjectInputStream(fis);
             String test = ois.toString();
-            String[] toTest = test.split("\\s");
+            String[] toTest = test.split(" ");
             for (int i = 0; i < toTest.length; i++) {
                 ImageIcon image = new ImageIcon(toTest[i]);
                 //Ecran_Galerie.center.add(new JLabel(image));
                 newTableau = ajoutImage(newTableau, image);
             }
 
-            ois.close();;
-        }
-        AjoutImage.tableau = newTableau;
+            ois.close();
+            }
 
-
+    return newTableau;
     }
 
     public ImageIcon[] ajoutImage(ImageIcon[] tableau, ImageIcon image) {
