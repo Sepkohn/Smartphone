@@ -1,9 +1,7 @@
-import java.awt.*;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.DropTargetDropEvent;
-import java.awt.event.*;
-
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AjoutImage extends JFrame {
 
@@ -38,43 +36,6 @@ public class AjoutImage extends JFrame {
 
     }
 
-    class EcouteurAdd extends MouseAdapter {
-
-        public void mouseClicked(MouseEvent e) {
-            // TODO Auto-generated method stub
-            Object source = e.getSource();
-
-            if (source == ok) {
-
-                ImageIcon image = new ImageIcon(new ImageIcon(lien.getText()).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
-
-                tableau = ajoutImage(tableau, image);
-
-                //AjoutImage.tableau[AjoutImage.tableau.length-1]=image;
-
-                //Ecran_Galerie.tableau=tableau;
-
-                Ecran_Galerie miseAjour = new Ecran_Galerie(image);
-
-                miseAjour.setVisible(true);
-
-
-                dispose();
-
-            }
-            if (source == cancel) {
-
-                Ecran_Galerie miseAjour = new Ecran_Galerie(null);
-
-                miseAjour.setVisible(true);
-
-                dispose();
-            }
-        }
-
-    }
-
-
     public static ImageIcon[] getTableau(ImageIcon[] tableau2) {
         // TODO Auto-generated method stub
         return tableau2;
@@ -90,6 +51,37 @@ public class AjoutImage extends JFrame {
         tableau2[tableau2.length - 1] = image;
 
         return tableau2;
+
+    }
+
+    class EcouteurAdd extends MouseAdapter {
+
+        public void mouseClicked(MouseEvent e) {
+            // TODO Auto-generated method stub
+            Object source = e.getSource();
+
+            if (source == ok) {
+
+                ImageIcon image = new ImageIcon(new ImageIcon(lien.getText()).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
+
+                tableau = ajoutImage(tableau, image);
+
+                Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+                miseAjour.setVisible(true);
+
+                dispose();
+
+            }
+            if (source == cancel) {
+
+                Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+                miseAjour.setVisible(true);
+
+                dispose();
+            }
+        }
 
     }
 
