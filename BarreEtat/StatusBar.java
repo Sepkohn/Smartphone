@@ -1,18 +1,18 @@
-import java.awt.BorderLayout;
-import java.awt.Container;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-
 public class StatusBar implements Runnable {
 
     protected TimerThread timerThread;
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new StatusBar());
+    }
 
     @Override
     public void run() {
@@ -54,10 +54,6 @@ public class StatusBar implements Runnable {
     public void exitProcedure() {
         timerThread.setRunning(false);
         System.exit(0);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new StatusBar());
     }
 
     public class TimerThread extends Thread {

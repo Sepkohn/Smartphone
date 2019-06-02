@@ -1,7 +1,7 @@
-import java.awt.Image;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JFrame;
 
 public class Ecouteur_Galerie extends MouseAdapter {
     public Ecouteur_Galerie(Ecran ecran) {
