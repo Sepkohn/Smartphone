@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -33,7 +34,14 @@ public class Ecran_Contact extends JFrame {
 
     } ;
 
-    JTable Table_Contact = new JTable(data, new Object[]{"Image", "Nom", "Prenom", "Numéro"});
+    JTable Table_Contact = new JTable(data , new Object[]{"Image", "Nom", "Prenom", "Numéro"}){
+        private static final long serialVersionUID = 1L;
+
+        public boolean isCellEditable(int row, int column) {
+            return false;
+
+        }};
+
 
     JScrollPane scroll = new JScrollPane(Table_Contact);
     JTableHeader Header = Table_Contact.getTableHeader();
@@ -106,16 +114,20 @@ public class Ecran_Contact extends JFrame {
 
         public Ecouteur_Ecran_Contact(Ecran_Contact ecranContact ) {
 
-            setSize(400, 800);
+            JFrame Add = new JFrame() ;
+            Add.setTitle("Ajouter");
+            Add.setSize(200,200);
 
 
         }
-
 
     }
 
 
 
 }
+
+
+
 
 
