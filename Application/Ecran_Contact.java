@@ -1,9 +1,9 @@
 import javax.swing.*;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 
 public class Ecran_Contact extends JFrame {
@@ -15,21 +15,31 @@ public class Ecran_Contact extends JFrame {
     JPanel Panel_START = new JPanel();
     JPanel Panel_END = new JPanel();
     JPanel Panel_Center = new JPanel();
-    JSlider slider = new JSlider (JSlider.VERTICAL);
     JButton Button_Back = new JButton("Retour");
-    JScrollPane Slider = new JScrollPane(Panel_Center);
+
+
+
+
     //JFrame frame = new JFrame();
 
 
-    // object[] columns = {"Image", "Nom", "Prenom", "Numéro"} ;
+    //Tab pour mettre des contacts...
+    Object[][] data = {
 
-    JTable Table_Contact = new JTable(40, 4);
+            {1, "Dupont", "François", "0789095522"},
+            {1, "Dupont", "François", "0789095522"},
+            {1, "Dupont", "François", "0789095522"},
+            {1, "Dupont", "François", "0789095522"}
 
-    // a voir si on fait un header dans le tableau
+    } ;
 
-    //DefaultTableModel model = new DefaultTableModel() ;
-    //model.setColumnIdentifiers(colums);
-    // Table_Contact.setModel(model) ;
+    JTable Table_Contact = new JTable(data, new Object[]{"Image", "Nom", "Prenom", "Numéro"});
+
+    JScrollPane scroll = new JScrollPane(Table_Contact);
+    JTableHeader Header = Table_Contact.getTableHeader();
+
+
+
 
 
     public Ecran_Contact() {
@@ -51,12 +61,20 @@ public class Ecran_Contact extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 Ecran_Contact.this.dispose();
-                Ecran_Contact.this.setVisible(false);
+                //Ecran_Contact.this.setVisible(false);
             }
         });
 
         // visuel app contact
         add(Panel_Center, BorderLayout.CENTER);
+
+        Panel_Center.add(Header);
+        Header.setBackground(Color.BLACK);
+        Header.setForeground(Color.WHITE);
+        Header.setVisible(true);
+        Header.setTable(Table_Contact);
+
+
         Panel_Center.setBackground(Color.BLACK);
         Panel_Center.add(Table_Contact);
         Table_Contact.setGridColor(Color.WHITE);
@@ -64,25 +82,23 @@ public class Ecran_Contact extends JFrame {
         Table_Contact.setForeground(Color.WHITE);
 
 
+
         //slider, voir comment on peut faire la faonction de glissage
-        add(Slider, BorderLayout.EAST);
+        add(scroll, BorderLayout.EAST);
 
         //Fonctions pour scroll le tableau
-        Slider.setHorizontalScrollBarPolicy(Slider.HORIZONTAL_SCROLLBAR_NEVER);
-        Slider.setVerticalScrollBarPolicy(Slider.VERTICAL_SCROLLBAR_AS_NEEDED);
-        Slider.setBounds(50, 30, 300, 50);
-        Panel_Center.add(Slider, BorderLayout.EAST);
+        scroll.setHorizontalScrollBarPolicy(scroll.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setVerticalScrollBarPolicy(scroll.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setBounds(100, 300, 3000, 200);
+        scroll.setVisible(true);
+        //Panel_Center.add(scroll, BorderLayout.EAST);
 
-        add(slider, BorderLayout.EAST) ;
 
 
+        //Button ajouter...
         Button_Add.addMouseListener(new Ecouteur_Ecran_Contact(this));
 
 
-        //frame.pack();
-
-        //frame.setVisible(true);
-        // champ reserve
 
     }
 
@@ -97,4 +113,9 @@ public class Ecran_Contact extends JFrame {
 
 
     }
+
+
+
 }
+
+
