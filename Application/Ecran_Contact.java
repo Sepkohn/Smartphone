@@ -117,6 +117,9 @@ public class Ecran_Contact extends JFrame {
             JFrame Add = new JFrame() ;
             Add.setTitle("Ajouter");
             Add.setSize(200,200);
+            Add.setVisible(true);
+            Add.getAccessibleContext();
+
 
 
         }
