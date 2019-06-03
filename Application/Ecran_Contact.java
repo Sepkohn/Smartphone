@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Ecran_Contact extends JFrame {
@@ -113,12 +114,21 @@ public class Ecran_Contact extends JFrame {
     public class Ecouteur_Ecran_Contact extends MouseAdapter {
 
         public Ecouteur_Ecran_Contact(Ecran_Contact ecranContact ) {
+        }
 
+            public void mouseClicked(MouseEvent a ) {
             JFrame Add = new JFrame() ;
+            JPanel UP = new JPanel() ;
+            JButton ok = new JButton("OK");
             Add.setTitle("Ajouter");
             Add.setSize(200,200);
             Add.setVisible(true);
             Add.getAccessibleContext();
+            add(UP, BorderLayout.NORTH);
+            UP.add(ok, BorderLayout.SOUTH) ;
+            UP.setVisible(true);
+            Add.setBackground(Color.BLACK);
+
 
 
 
