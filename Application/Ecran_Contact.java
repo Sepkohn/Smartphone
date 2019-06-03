@@ -128,6 +128,9 @@ public class Ecran_Contact extends JFrame {
             UP.add(ok, BorderLayout.SOUTH) ;
             UP.setVisible(true);
             Add.setBackground(Color.BLACK);
+            
+
+
 
 
 
