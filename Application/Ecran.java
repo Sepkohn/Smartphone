@@ -1,11 +1,11 @@
+import javafx.util.converter.ByteStringConverter;
+
+import javax.imageio.stream.ImageOutputStream;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 
 public class Ecran extends JFrame {
@@ -59,7 +59,7 @@ public class Ecran extends JFrame {
             Ecran_Galerie test = new Ecran_Galerie();
             test.setVisible(true);
             try {
-                AjoutImage.tableau = deserialisation();
+                AjoutImage.tabLien = deserialisation();
             } catch (IOException ex) {
                 ex.printStackTrace();
                 System.out.println("Import Export exception");
@@ -67,6 +67,7 @@ public class Ecran extends JFrame {
                 ex.printStackTrace();
                 System.out.println("Classe non trouvée");
             }
+            AjoutImage.tableau = toImage(AjoutImage.tabLien);
             dispose();
         }
 
@@ -75,30 +76,34 @@ public class Ecran extends JFrame {
         }
     }
 
-    public ImageIcon[] deserialisation () throws IOException, ClassNotFoundException {
-        ImageIcon[] newTableau = new ImageIcon[0];
+    public String[] deserialisation () throws IOException, ClassNotFoundException {
+
         FileInputStream fis = null;
         try {
             // fis = new FileInputStream("C:/temp/Smartphone/Out/production/Smartphone/Images/save.ser");
             fis = new FileInputStream("C:/temp/Smartphone/Images/save.ser");
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("fichier pas trouvé");
         }
-        if (fis != null) {
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            String test = ois.toString();
-            String[] toTest = test.split(" ");
-            for (int i = 0; i < toTest.length; i++) {
-                ImageIcon image = new ImageIcon(toTest[i]);
-                //Ecran_Galerie.center.add(new JLabel(image));
-                newTableau = ajoutImage(newTableau, image);
-            }
+        ObjectInputStream ois = new ObjectInputStream(fis);
 
-            ois.close();
-            }
+        DataInputStream ds = new DataInputStream(ois);
 
-    return newTableau;
+        String getliens = ds.readUTF();
+
+        String[] toString =new String[0];
+
+        if(getliens!=null){
+        toString = getliens.split(" ");}
+
+        ds.close();
+        ois.close();
+
+
+    return toString;
     }
 
     public ImageIcon[] ajoutImage(ImageIcon[] tableau, ImageIcon image) {
@@ -112,6 +117,30 @@ public class Ecran extends JFrame {
 
         return tableau2;
 
+    }
+
+    public ImageIcon[] toImage(String[] toString) {
+
+        ImageIcon[] newTableau = new ImageIcon[0];
+
+        for(int i = 0; i<toString.length;i++){
+            ImageIcon im = new ImageIcon(toString[i]);
+            newTableau = ajoutImage(newTableau, im);
+        }
+
+        return newTableau;
+    }
+
+    public String [] ajoutLien (String[] tableau, String lien){
+
+        String[] tableau2  = new String[tableau.length+1];
+
+        for (int i = 0; i < tableau.length; i++) {
+            tableau2[i] = tableau[i];
+        }
+        tableau2[tableau2.length - 1] = lien;
+
+        return tableau2;
     }
 }
 

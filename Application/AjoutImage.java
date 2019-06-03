@@ -2,10 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.*;
 
-public class AjoutImage extends JFrame {
+public class AjoutImage extends JFrame implements Serializable {
 
     static ImageIcon[] tableau = new ImageIcon[0];
+    static String[] tabLien = new String[0];
 
     JTextArea aide = new JTextArea("Insert image link");
 
@@ -18,6 +20,8 @@ public class AjoutImage extends JFrame {
     JPanel south = new JPanel();
 
     public AjoutImage() {
+
+
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -36,10 +40,7 @@ public class AjoutImage extends JFrame {
 
     }
 
-    public static ImageIcon[] getTableau(ImageIcon[] tableau2) {
-        // TODO Auto-generated method stub
-        return tableau2;
-    }
+
 
     public ImageIcon[] ajoutImage(ImageIcon[] tableau, ImageIcon image) {
 
@@ -54,6 +55,18 @@ public class AjoutImage extends JFrame {
 
     }
 
+    public String [] ajoutLien (String[] tableau, String lien){
+
+        String[] tableau2  = new String[tableau.length+1];
+
+        for (int i = 0; i < tableau.length; i++) {
+            tableau2[i] = tableau[i];
+        }
+        tableau2[tableau2.length - 1] = lien;
+
+        return tableau2;
+    }
+
     class EcouteurAdd extends MouseAdapter {
 
         public void mouseClicked(MouseEvent e) {
@@ -62,9 +75,16 @@ public class AjoutImage extends JFrame {
 
             if (source == ok) {
 
-                ImageIcon image = new ImageIcon(new ImageIcon(lien.getText()).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
+                String link = lien.getText();
+
+                ImageIcon image = new ImageIcon(new ImageIcon(link).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
 
                 tableau = ajoutImage(tableau, image);
+                tabLien = ajoutLien(tabLien, link);
+
+                String[] serialisable = tabLien;
+
+                serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -75,6 +95,10 @@ public class AjoutImage extends JFrame {
             }
             if (source == cancel) {
 
+                String[] serialisable = tabLien;
+
+                serialisation(serialisable);
+
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
                 miseAjour.setVisible(true);
@@ -84,6 +108,28 @@ public class AjoutImage extends JFrame {
         }
 
     }
+
+    public void serialisation(String[] tableau) {
+
+        try {
+            FileOutputStream out = new FileOutputStream("C:/temp/Smartphone/Images/save.ser");
+
+            DataOutputStream ds = new DataOutputStream(out);
+
+
+            for (int i = 0; i < tableau.length; i++) {
+                String image = tableau[i];
+                ds.writeChars(image +" ");
+            }
+
+            ds.close();
+            out.close();
+
+        } catch (IOException e) {
+            System.out.println("erreur");
+        }
+    }
+
 
 
 }
