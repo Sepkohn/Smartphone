@@ -93,14 +93,16 @@ public class Ecran_Contact extends JFrame {
 
 
         //slider, voir comment on peut faire la faonction de glissage
-        add(scroll, BorderLayout.EAST);
 
         //Fonctions pour scroll le tableau
+        Panel_Center.add(scroll) ;
+        scroll.setBorder(BorderFactory.createEmptyBorder());
         scroll.setHorizontalScrollBarPolicy(scroll.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setVerticalScrollBarPolicy(scroll.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scroll.setBounds(100, 300, 3000, 200);
+        scroll.setViewportBorder(null);
+        scroll.setBackground(Color.WHITE);
         scroll.setVisible(true);
-        //Panel_Center.add(scroll, BorderLayout.EAST);
+
 
 
 
@@ -113,35 +115,35 @@ public class Ecran_Contact extends JFrame {
 
     public class Ecouteur_Ecran_Contact extends MouseAdapter {
 
-        public Ecouteur_Ecran_Contact(Ecran_Contact ecranContact ) {
+        public Ecouteur_Ecran_Contact(Ecran_Contact EcranAdd ) {
+
+
         }
 
             public void mouseClicked(MouseEvent a ) {
-            JFrame Add = new JFrame() ;
-            JPanel UP = new JPanel() ;
-            JButton ok = new JButton("OK");
-            Add.setTitle("Ajouter");
-            Add.setSize(200,200);
-            Add.setVisible(true);
-            Add.getAccessibleContext();
-            add(UP, BorderLayout.NORTH);
-            UP.add(ok, BorderLayout.SOUTH) ;
-            UP.setVisible(true);
-            Add.setBackground(Color.BLACK);
-            
 
+                JFrame AddContact = new JFrame() ;
+                JPanel Panel_Sud = new JPanel();
 
+                    AddContact.setTitle("Ajouter");
+                    AddContact.setSize(200, 200);
+                    AddContact.setVisible(true);
 
+                    Panel_Sud.add(AddContact, BorderLayout.SOUTH);
 
 
 
         }
+
+        }
+
 
     }
 
 
 
-}
+
+
 
 
 
