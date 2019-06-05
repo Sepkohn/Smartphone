@@ -11,7 +11,8 @@ public class Ecouteur_Galerie extends MouseAdapter {
         JFrame test = new JFrame();
         test.setVisible(true);
         test.setSize(200, 200);
-
+        test.setResizable(false);
+        test.setLocationRelativeTo(null);
     }
 
     public Image ajouter(Image image) {

@@ -22,6 +22,7 @@ public class Ecran extends JFrame {
 
     public Ecran() {
 
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setSize(400, 800);

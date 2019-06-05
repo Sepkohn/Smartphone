@@ -46,6 +46,7 @@ public class Ecran_Contact extends JFrame {
 
     public Ecran_Contact() {
 
+        setResizable(false);
         add(Panel_START, BorderLayout.NORTH);
         Panel_START.setBackground(Color.BLACK);
         Panel_START.add(Button_Add);
@@ -116,6 +117,7 @@ public class Ecran_Contact extends JFrame {
             public void mouseClicked(MouseEvent a ) {
 
                 JFrame AddContact = new JFrame() ;
+                AddContact.setResizable(false);
                 AddContact.setLocationRelativeTo(null);
                 JPanel Panel_Sud = new JPanel();
 
@@ -124,14 +126,12 @@ public class Ecran_Contact extends JFrame {
                 AddContact.setVisible(true);
                 Panel_Sud.add(AddContact, BorderLayout.SOUTH);
 
-
-
         }
-
-        }
-
 
     }
+
+
+}
 
 
 
