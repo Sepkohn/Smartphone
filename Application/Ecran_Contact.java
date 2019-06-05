@@ -21,10 +21,6 @@ public class Ecran_Contact extends JFrame {
 
 
 
-
-    //JFrame frame = new JFrame();
-
-
     //Tab pour mettre des contacts...
     Object[][] data = {
 
@@ -46,9 +42,6 @@ public class Ecran_Contact extends JFrame {
 
     JScrollPane scroll = new JScrollPane(Table_Contact);
     JTableHeader Header = Table_Contact.getTableHeader();
-
-
-
 
 
     public Ecran_Contact() {
@@ -123,13 +116,13 @@ public class Ecran_Contact extends JFrame {
             public void mouseClicked(MouseEvent a ) {
 
                 JFrame AddContact = new JFrame() ;
+                AddContact.setLocationRelativeTo(null);
                 JPanel Panel_Sud = new JPanel();
 
-                    AddContact.setTitle("Ajouter");
-                    AddContact.setSize(200, 200);
-                    AddContact.setVisible(true);
-
-                    Panel_Sud.add(AddContact, BorderLayout.SOUTH);
+                AddContact.setTitle("Ajouter");
+                AddContact.setSize(200, 200);
+                AddContact.setVisible(true);
+                Panel_Sud.add(AddContact, BorderLayout.SOUTH);
 
 
 

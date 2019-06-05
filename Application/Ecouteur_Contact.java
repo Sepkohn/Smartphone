@@ -12,7 +12,7 @@ public class Ecouteur_Contact extends MouseAdapter {
         Ecran_Contact Ecran = new Ecran_Contact();
         Ecran.setVisible(true);
         Ecran.setSize(400, 800);
-        Ecran.setLocationRelativeTo(Ecran);
+        Ecran.setLocationRelativeTo(null);
         Ecran.setTitle("Contacts");
         Ecran.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

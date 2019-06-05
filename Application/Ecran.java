@@ -19,10 +19,14 @@ public class Ecran extends JFrame {
     JPanel centre = new JPanel();
 
 
+
     public Ecran() {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         setSize(400, 800);
+        //app au centre de l'écran :p
+        setLocationRelativeTo(null);
 
         south.add(cancel);
         south.add(undo);
@@ -47,6 +51,8 @@ public class Ecran extends JFrame {
         contact.addMouseListener(new Ecouteur_Contact(this));
 
         //ajout de l'horloge dans l'écran principal (AMK)
+
+
 
 
     }
