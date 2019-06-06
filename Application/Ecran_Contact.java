@@ -45,7 +45,8 @@ public class Ecran_Contact extends JFrame {
 
 
     public Ecran_Contact() {
-
+        // à voir si cela peut intéresser... (enlève la barre de navigation du JFrame
+        //setUndecorated(true);
         setResizable(false);
         add(Panel_START, BorderLayout.NORTH);
         Panel_START.setBackground(Color.BLACK);
@@ -117,14 +118,15 @@ public class Ecran_Contact extends JFrame {
             public void mouseClicked(MouseEvent a ) {
 
                 JFrame AddContact = new JFrame() ;
+                JPanel PanelSud = new JPanel();
+                JButton Add = new JButton("Ajouter");
                 AddContact.setResizable(false);
                 AddContact.setLocationRelativeTo(null);
-                JPanel Panel_Sud = new JPanel();
-
                 AddContact.setTitle("Ajouter");
                 AddContact.setSize(200, 200);
                 AddContact.setVisible(true);
-                Panel_Sud.add(AddContact, BorderLayout.SOUTH);
+                
+
 
         }
 
