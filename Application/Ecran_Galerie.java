@@ -26,9 +26,9 @@ public class Ecran_Galerie extends JFrame {
     public Ecran_Galerie() {
 
         setResizable(false);
-        setLocationRelativeTo(null);
         JPanel center = new JPanel();
         setSize(400, 800);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         for(int i = 0; i<AjoutImage.tableau.length;i++) {
