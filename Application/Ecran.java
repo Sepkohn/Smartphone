@@ -37,8 +37,8 @@ public class Ecran extends JFrame {
         centre.add(galerie);
         centre.add(contact);
 
+        //ajout de la barre supérieure avec l'horloge...
         north.add(new BarreEtat());
-
 
         //voir si on peut mettre un fond d'ecran...
         centre.setOpaque(false);
