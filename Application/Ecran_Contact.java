@@ -118,14 +118,11 @@ public class Ecran_Contact extends JFrame {
             public void mouseClicked(MouseEvent a ) {
 
                 JFrame AddContact = new JFrame() ;
-                JPanel PanelSud = new JPanel();
-                JButton Add = new JButton("Ajouter");
                 AddContact.setResizable(false);
                 AddContact.setLocationRelativeTo(null);
                 AddContact.setTitle("Ajouter");
                 AddContact.setSize(200, 200);
                 AddContact.setVisible(true);
-                
 
 
         }
