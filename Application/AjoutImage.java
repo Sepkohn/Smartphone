@@ -66,10 +66,6 @@ public class AjoutImage extends JFrame implements Serializable {
 
                 Ecran_Galerie.tabLien = ajoutLien(tabLien, link);
 
-                for(int i = 0; i<Ecran_Galerie.tabLien.length;i++){
-                    System.out.println(Ecran_Galerie.tabLien[i]+" "+i);
-                }
-
                 String[] serialisable = tabLien;
 
                 //serialisation(serialisable);

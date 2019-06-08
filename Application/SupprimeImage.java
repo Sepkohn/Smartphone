@@ -2,11 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
-public class SupprimeImage extends JFrame {
+public class SupprimeImage extends JFrame implements Serializable{
 
    String[] tabLien = getTableau(Ecran_Galerie.tabLien);
 
@@ -54,7 +52,7 @@ public class SupprimeImage extends JFrame {
 
                 String[] serialisable = Ecran_Galerie.tabLien;
 
-               // serialisation(serialisable);
+                serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -65,9 +63,9 @@ public class SupprimeImage extends JFrame {
             }
             if (source == cancel) {
 
-                String[] serialisable = Ecran_Galerie.tabLien;
+                String[] serialisable = tabLien;
 
-                //serialisation(serialisable);
+                serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -81,10 +79,14 @@ public class SupprimeImage extends JFrame {
 
     public void serialisation(String[] tableau) {
 
-        try {
-            FileOutputStream out = new FileOutputStream("C:/temp/Smartphone/Images/save.ser");
+            File fichier;
+            fichier = new File("C:/temp/Smartphone/Images/save.ser");
+            fichier.delete();
 
-            DataOutputStream ds = new DataOutputStream(out);
+        try {
+            FileOutputStream fos = new FileOutputStream(fichier);
+
+            DataOutputStream ds = new DataOutputStream(fos);
 
 
             for (int i = 0; i < tableau.length; i++) {
@@ -93,7 +95,7 @@ public class SupprimeImage extends JFrame {
             }
 
             ds.close();
-            out.close();
+            fos.close();
 
         } catch (IOException e) {
             System.out.println("erreur");

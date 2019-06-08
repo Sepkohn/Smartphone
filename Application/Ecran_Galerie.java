@@ -15,12 +15,13 @@ public class Ecran_Galerie extends JFrame {
     JButton cancel = new JButton("Cancel");
 
 
-    //GridLayout centerGrid = new GridLayout(0, 3, 1, 1);
+    GridLayout centerGrid = new GridLayout(0, 3, 1, 1);
 
 
     JPanel south = new JPanel();
     JPanel north = new JPanel();
     JPanel center = new JPanel();
+
 
 
     public Ecran_Galerie() {
@@ -35,7 +36,6 @@ public class Ecran_Galerie extends JFrame {
         tableau = misAjour(tabLien);
         }
 
-
         center.removeAll();
         center.setSize(getMinimumSize());
         center.setMaximumSize(getMaximumSize());
@@ -44,6 +44,7 @@ public class Ecran_Galerie extends JFrame {
             JLabel label = new JLabel(tableau[i]);
             center.add(label);
         }
+
 
 
         north.add(plus);
