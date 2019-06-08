@@ -31,7 +31,7 @@ public class BarreEtat extends JPanel {
 
     public void addRightComponent(JComponent component) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING, 5, 0));
-        panel.add(new PanelSeparator(Color.GRAY, Color.WHITE));
+        panel.add(new PanelSeparator(Color.WHITE, Color.WHITE));
         panel.add(component);
         rightPanel.add(panel);
     }

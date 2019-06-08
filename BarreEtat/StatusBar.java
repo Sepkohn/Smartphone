@@ -18,13 +18,13 @@ public class StatusBar implements Runnable {
     public void run() {
         JFrame frame = new JFrame();
         frame.setBounds(100, 200, 400, 200);
-        frame.setTitle("Status Bar Simulator");
+        //frame.setTitle("Status Bar Simulator");
 
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         BarreEtat statusBar = new BarreEtat();
-        JLabel leftLabel = new JLabel("Your application is running.");
+        JLabel leftLabel = new JLabel("Le Smartphone est allumé");
         statusBar.setLeftComponent(leftLabel);
 
         final JLabel dateLabel = new JLabel();
