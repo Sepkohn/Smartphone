@@ -59,29 +59,57 @@ public class AjoutImage extends JFrame implements Serializable {
 
             if (source == ok) {
 
+
                 String link = lien.getText();
 
+                boolean format = testImage(link);
 
-                ImageIcon image = new ImageIcon(new ImageIcon(link).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
+                if(format == true){
+                    ImageIcon image = new ImageIcon(new ImageIcon(link).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
+                    if(image!= null) {
+                        tabLien = ajoutLien(tabLien, link);
+                        Ecran_Galerie.tabLien = tabLien;
 
-                Ecran_Galerie.tabLien = ajoutLien(tabLien, link);
+                        String[] serialisable = tabLien;
 
-                String[] serialisable = tabLien;
+                        serialisation(serialisable);
 
-                //serialisation(serialisable);
+                        Ecran_Galerie miseAjour = new Ecran_Galerie();
 
-                Ecran_Galerie miseAjour = new Ecran_Galerie();
+                        miseAjour.setVisible(true);
 
-                miseAjour.setVisible(true);
+                        dispose();
+                    }
+                    else{
+                        JFrame erreur = new JFrame();
+                        erreur.setVisible(true);
+                        setLocationRelativeTo(null);
+                        erreur.setSize(400, 100);
 
-                dispose();
 
+                        JTextArea message = new JTextArea("L'image n'a pas pu être crée");
+                        erreur.add(message);
+                    }
+                }
+
+                else{
+                    JFrame erreur = new JFrame();
+                    erreur.setVisible(true);
+                    setLocationRelativeTo(null);
+                    erreur.setSize(400, 100);
+
+
+                    JTextArea message = new JTextArea("Erreur image invalide. Erreur chemin d'accès ou format invalide. " +
+                            "Formats disponibles : .jpg, .gif ou .png");
+                    erreur.add(message);
+                }
             }
+
             if (source == cancel) {
 
                 String[] serialisable = tabLien;
 
-               // serialisation(serialisable);
+                serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -95,10 +123,14 @@ public class AjoutImage extends JFrame implements Serializable {
 
     public void serialisation(String[] tableau) {
 
-        try {
-            FileOutputStream out = new FileOutputStream("C:/temp/Smartphone/Images/save.ser");
+        File fichier;
+        fichier = new File("C:/temp/Smartphone/Images/save.ser");
+        fichier.delete();
 
-            DataOutputStream ds = new DataOutputStream(out);
+        try {
+            FileOutputStream fos = new FileOutputStream(fichier);
+
+            DataOutputStream ds = new DataOutputStream(fos);
 
 
             for (int i = 0; i < tableau.length; i++) {
@@ -107,11 +139,29 @@ public class AjoutImage extends JFrame implements Serializable {
             }
 
             ds.close();
-            out.close();
+            fos.close();
 
         } catch (IOException e) {
             System.out.println("erreur");
         }
     }
 
+    public boolean testImage(String lien){
+        if(lien.contains(".jpg")){
+            return true;
+        }
+        else{
+            if(lien.contains(".gif")){
+                return true;
+            }
+            else{
+                if(lien.contains(".png")){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+    }
 }

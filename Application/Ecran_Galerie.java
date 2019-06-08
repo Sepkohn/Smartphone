@@ -6,6 +6,7 @@ import java.io.*;
 
 public class Ecran_Galerie extends JFrame {
 
+
     ImageIcon[] tableau = new ImageIcon[0];
     static String[] tabLien = new String[0];
 
@@ -25,6 +26,7 @@ public class Ecran_Galerie extends JFrame {
 
 
     public Ecran_Galerie() {
+
 
         setResizable(false);
 
@@ -58,7 +60,7 @@ public class Ecran_Galerie extends JFrame {
         //centerGrid.addLayoutComponent(null, new JLabel(image));
         //center.add(new JLabel(image));
 
-        add(new JScrollPane(center), BorderLayout.CENTER);
+        add(new JScrollPane(center, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
 
 
 
