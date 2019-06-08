@@ -152,5 +152,3 @@ public class Ecran extends JFrame {
         return tableau2;
     }
 }
-
-
