@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class SupprimeImage extends JFrame {
 
+   String[] tabLien = getTableau(Ecran_Galerie.tabLien);
 
     JTextArea aide = new JTextArea("Insert image link");
 
@@ -23,7 +24,7 @@ public class SupprimeImage extends JFrame {
 
 
     setSize(400, 800);
-
+    setLocationRelativeTo(null);
 
         south.add(ok);
         south.add(cancel);
@@ -47,13 +48,13 @@ public class SupprimeImage extends JFrame {
 
                 String link = lien.getText();
 
-                AjoutImage.tabLien = supprimeLiens(AjoutImage.tabLien, link);
+                Ecran_Galerie.tabLien = supprimeLiens(tabLien, link);
 
-                AjoutImage.tableau = supprimeImage(AjoutImage.tableau, AjoutImage.tabLien);
+                //Ecran_Galerie.tableau = supprimeImage(tableau, tabLien);
 
-                String[] serialisable = AjoutImage.tabLien;
+                String[] serialisable = Ecran_Galerie.tabLien;
 
-                serialisation(serialisable);
+               // serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -64,9 +65,9 @@ public class SupprimeImage extends JFrame {
             }
             if (source == cancel) {
 
-                String[] serialisable = AjoutImage.tabLien;
+                String[] serialisable = Ecran_Galerie.tabLien;
 
-                serialisation(serialisable);
+                //serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -99,51 +100,62 @@ public class SupprimeImage extends JFrame {
         }
     }
 
-    public ImageIcon[] supprimeImage(ImageIcon[] tableau, String[] liens){
-
-        ImageIcon[] newTableau = new ImageIcon[tableau.length -1];
-
-        for(int i = 0; i<liens.length;i++){
-            newTableau[i]= new ImageIcon(liens[i]);
-        }
-
-        return newTableau;
-    }
 
     public String[] supprimeLiens(String[] liens, String link){
 
-        int count =0;
         String[] newTab = new String[0];
+        int count = 0;
 
-        for(int i = 0;i<liens.length;i++){
-            if(liens[i]==link){
-                for(int j = i; j< liens.length;i++){
-                    liens[i]=liens[i+1];
+        if(liens!=null) {
+
+            for (int i = 0; i < liens.length && count != 1; i++) {
+
+                if (liens[i].equals(link)) {
+
+                    for (int j = i; j < liens.length-1; j++) {
+                        liens[j] = liens[j + 1];
+
+                    }
+
+                    newTab = new String[liens.length - 1];
+                    for (int k = 0; k < newTab.length; k++) {
+                        newTab[k] = liens[k];
+
+                    }
                     count++;
-                    break;
-                }
-                newTab = new String[liens.length-1];
-                for(int k = 0;k<liens.length;k++){
-                    newTab[k]=liens[k];
-                }
-            }
-            else if(i==liens.length-1 && count==0){
-                JFrame erreur = new JFrame();
-                erreur.setVisible(true);
-                erreur.setSize(400,300);
 
-                JTextArea message = new JTextArea("Erreur : image non trouvée");
-                erreur.add(message);
-                newTab=liens;
+                } else if (i == liens.length - 1) {
+                    JFrame erreur = new JFrame();
+                    erreur.setVisible(true);
+                    setLocationRelativeTo(null);
+                    erreur.setSize(400, 100);
+
+
+                    JTextArea message = new JTextArea("Erreur : image non trouvée");
+                    erreur.add(message);
+
+                    newTab = liens;
+                }
             }
         }
+        else {
+            JFrame erreur = new JFrame();
+            erreur.setVisible(true);
+            setLocationRelativeTo(this);
+            erreur.setSize(400, 100);
 
+            JTextArea message = new JTextArea("Erreur : le tableau est vide!!");
+            erreur.add(message);
 
+            newTab = liens;
 
-
-
+        }
 
         return newTab;
+    }
+
+    public String[] getTableau (String[] tableauS){
+        return tableauS;
     }
 
 }

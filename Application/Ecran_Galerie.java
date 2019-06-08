@@ -6,49 +6,63 @@ import java.io.*;
 
 public class Ecran_Galerie extends JFrame {
 
+    ImageIcon[] tableau = new ImageIcon[0];
+    static String[] tabLien = new String[0];
+
 
     JButton plus = new JButton("+");
     JButton moins = new JButton("-");
     JButton cancel = new JButton("Cancel");
-    JScrollBar deroulant = new JScrollBar();
-
-	
-	/*ImageIcon pikachu;
-	ImageIcon salameche;
-	ImageIcon dracofeu;*/
-    GridLayout centerGrid = new GridLayout(0, 2, 1, 1);
 
 
-    //static ImageIcon[] tableau = new ImageIcon[1];
+    //GridLayout centerGrid = new GridLayout(0, 3, 1, 1);
+
+
     JPanel south = new JPanel();
     JPanel north = new JPanel();
+    JPanel center = new JPanel();
+
 
     public Ecran_Galerie() {
 
         setResizable(false);
-        JPanel center = new JPanel();
+
         setSize(400, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        for(int i = 0; i<AjoutImage.tableau.length;i++) {
-            JLabel label = new JLabel(AjoutImage.tableau[i]);
+        if(tabLien!=null){
+        tableau = misAjour(tabLien);
+        }
+
+
+        center.removeAll();
+        center.setSize(getMinimumSize());
+        center.setMaximumSize(getMaximumSize());
+
+        for(int i = 0; i<tableau.length;i++) {
+            JLabel label = new JLabel(tableau[i]);
             center.add(label);
         }
+
 
         north.add(plus);
         north.add(moins);
 
+
         add(north, BorderLayout.NORTH);
 
-       // setLayout(centerGrid);
+
+
         //centerGrid.addLayoutComponent(null, new JLabel(image));
         //center.add(new JLabel(image));
-        add(center, BorderLayout.CENTER);
+
+        add(new JScrollPane(center), BorderLayout.CENTER);
 
 
-        add(deroulant, BorderLayout.EAST);
-        add(cancel, BorderLayout.SOUTH);
+
+
+        add(cancel, BorderLayout.AFTER_LAST_LINE);
 
         plus.addMouseListener(new Ecouteur_Ecran_Galerie(this));
         cancel.addMouseListener(new Ecouteur_Ecran_Galerie(this));
@@ -93,6 +107,24 @@ public class Ecran_Galerie extends JFrame {
         }
 
 
+    }
+
+    public ImageIcon[] misAjour (String[] tabLien){
+        ImageIcon[] tableau = new ImageIcon[tabLien.length];
+        for(int i =0;i<tabLien.length;i++){
+            ImageIcon image = new ImageIcon(new ImageIcon(tabLien[i]).getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
+            tableau[i]=image;
+        }
+
+        return tableau;
+    }
+
+    public Dimension getMaximumSize() {
+        return new Dimension(300, 999999999);
+    }
+
+    public Dimension getMinimumSize() {
+        return new Dimension(300, 800);
     }
 
 }

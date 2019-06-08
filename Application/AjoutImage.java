@@ -6,8 +6,7 @@ import java.io.*;
 
 public class AjoutImage extends JFrame implements Serializable {
 
-    static ImageIcon[] tableau = new ImageIcon[0];
-    static String[] tabLien = new String[0];
+    String[] tabLien = Ecran_Galerie.tabLien;
 
     JTextArea aide = new JTextArea("Insert image link");
 
@@ -26,7 +25,7 @@ public class AjoutImage extends JFrame implements Serializable {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setSize(400, 800);
-
+        setLocationRelativeTo(null);
 
         south.add(ok);
         south.add(cancel);
@@ -37,21 +36,6 @@ public class AjoutImage extends JFrame implements Serializable {
 
         ok.addMouseListener(new EcouteurAdd());
         cancel.addMouseListener(new EcouteurAdd());
-
-    }
-
-
-
-    public ImageIcon[] ajoutImage(ImageIcon[] tableau, ImageIcon image) {
-
-
-        ImageIcon[] tableau2 = new ImageIcon[tableau.length + 1];
-        for (int i = 0; i < tableau.length; i++) {
-            tableau2[i] = tableau[i];
-        }
-        tableau2[tableau2.length - 1] = image;
-
-        return tableau2;
 
     }
 
@@ -77,14 +61,18 @@ public class AjoutImage extends JFrame implements Serializable {
 
                 String link = lien.getText();
 
+
                 ImageIcon image = new ImageIcon(new ImageIcon(link).getImage().getScaledInstance(175, 200, Image.SCALE_DEFAULT));
 
-                tableau = ajoutImage(tableau, image);
-                tabLien = ajoutLien(tabLien, link);
+                Ecran_Galerie.tabLien = ajoutLien(tabLien, link);
+
+                for(int i = 0; i<Ecran_Galerie.tabLien.length;i++){
+                    System.out.println(Ecran_Galerie.tabLien[i]+" "+i);
+                }
 
                 String[] serialisable = tabLien;
 
-                serialisation(serialisable);
+                //serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -97,7 +85,7 @@ public class AjoutImage extends JFrame implements Serializable {
 
                 String[] serialisable = tabLien;
 
-                serialisation(serialisable);
+               // serialisation(serialisable);
 
                 Ecran_Galerie miseAjour = new Ecran_Galerie();
 
@@ -129,7 +117,5 @@ public class AjoutImage extends JFrame implements Serializable {
             System.out.println("erreur");
         }
     }
-
-
 
 }
