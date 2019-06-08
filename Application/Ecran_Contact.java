@@ -1,5 +1,7 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,11 +36,14 @@ public class Ecran_Contact extends JFrame {
     JTable Table_Contact = new JTable(data , new Object[]{"Image", "Nom", "Prenom", "Numéro"}){
         private static final long serialVersionUID = 1L;
 
+
+
         public boolean isCellEditable(int row, int column) {
             return false;
 
         }};
 
+   // DefaultTableModel DefaultTable = (DefaultTableModel)Table_Contact.getModel();
 
     JScrollPane scroll = new JScrollPane(Table_Contact);
     JTableHeader Header = Table_Contact.getTableHeader();
@@ -119,18 +124,103 @@ public class Ecran_Contact extends JFrame {
 
                 JFrame AddContact = new JFrame() ;
                 AddContact.setResizable(false);
-                AddContact.setLocationRelativeTo(null);
                 AddContact.setTitle("Ajouter");
-                AddContact.setSize(200, 200);
+                AddContact.setSize(400, 800);
+                AddContact.setLocationRelativeTo(null);
                 AddContact.setVisible(true);
 
+                // Champs TextField pour mettre les nouvelles infos
+                JPanel centre = new JPanel();
+                AddContact.add(centre);
+                centre.setVisible(true);
+
+                JLabel enonce_1 = new JLabel();
+                enonce_1.setText("Nom:   ");
+                centre.add(enonce_1);
+                JTextField nom = new JTextField( 28);
+                centre.add(nom);
+                nom.getActionListeners();
+
+
+
+
+                JLabel enonce_2 = new JLabel();
+                enonce_2.setText("Prénom:");
+                centre.add(enonce_2);
+                JTextField prenom = new JTextField( 28);
+                centre.add(prenom);
+
+
+
+                JLabel enonce_3 = new JLabel();
+                enonce_3.setText("Téléphone:");
+                centre.add(enonce_3);
+                JTextField numero = new JTextField( 27);
+                centre.add(numero);
+                ///numero.addActionListener();
+
+                // rajouter un bouton pour choisir la photo à partir de la galerie
+                JButton Add_Photo = new JButton("Image de contact");
+                centre.add(Add_Photo);
+                Add_Photo.setVisible(true);
+
+
+
+
+
+
+                // Buttons avec actions pour ajouter ou annuler l'opération
+                JPanel sud = new JPanel();
+                AddContact.add(sud, BorderLayout.SOUTH);
+                sud.setVisible(true);
+
+                JButton OK_New_Contact = new JButton("Ajouter");
+                OK_New_Contact.setVisible(true);
+                sud.add(OK_New_Contact);
+
+                JButton Annuler = new JButton("Annuler");
+                Annuler.setVisible(true);
+                sud.add(Annuler);
+
+                Annuler.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent i) {
+
+                        AddContact.dispose();
+                        //Ecran_Contact.this.setVisible(false);
+                    }
+
+                });
+
+                OK_New_Contact.addActionListener((new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        //ajoutt d'une nouvelle row avec les nouvelles infos remplies
+
+
+                    }
+                }
+
+                )
+
+                );
+
+               // DefaultTable.addRow(new Object[] { 1,  nom.getText(), prenom.getText(), numero.getText() });
+
+
+            }
 
         }
 
-    }
-
 
 }
+
+
+
+
+
 
 
 
