@@ -43,10 +43,12 @@ public class Ecran_Contact extends JFrame {
 
         }};
 
-   // DefaultTableModel DefaultTable = (DefaultTableModel)Table_Contact.getModel();
+
 
     JScrollPane scroll = new JScrollPane(Table_Contact);
     JTableHeader Header = Table_Contact.getTableHeader();
+
+
 
 
     public Ecran_Contact() {
@@ -105,7 +107,6 @@ public class Ecran_Contact extends JFrame {
 
 
 
-
         //Button ajouter...
         Button_Add.addMouseListener(new Ecouteur_Ecran_Contact(this));
 
@@ -139,9 +140,6 @@ public class Ecran_Contact extends JFrame {
                 centre.add(enonce_1);
                 JTextField nom = new JTextField( 28);
                 centre.add(nom);
-                nom.getActionListeners();
-
-
 
 
                 JLabel enonce_2 = new JLabel();
@@ -149,7 +147,6 @@ public class Ecran_Contact extends JFrame {
                 centre.add(enonce_2);
                 JTextField prenom = new JTextField( 28);
                 centre.add(prenom);
-
 
 
                 JLabel enonce_3 = new JLabel();
@@ -164,9 +161,22 @@ public class Ecran_Contact extends JFrame {
                 centre.add(Add_Photo);
                 Add_Photo.setVisible(true);
 
+                //Ecouteur pour donnes rentrées par l'user
+                Object [] row = new Object[3] ;
+                Add_Photo.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        row[1] = nom.getText();
+                        row[2] = prenom.getText();
+                        row[3] = numero.getText();
+                        // la ligne 0 est réservée à l'image de contact (plutôt une icône vu la taille de chaque ligne)
+                    }
+
+                }
 
 
-
+            );
 
 
                 // Buttons avec actions pour ajouter ou annuler l'opération
@@ -207,10 +217,13 @@ public class Ecran_Contact extends JFrame {
 
                 );
 
-               // DefaultTable.addRow(new Object[] { 1,  nom.getText(), prenom.getText(), numero.getText() });
 
+
+                //DefaultTableModel model = (DefaultTableModel)Table_Contact.getModel();
 
             }
+
+
 
         }
 
