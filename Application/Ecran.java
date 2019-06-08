@@ -65,7 +65,8 @@ public class Ecran extends JFrame {
         public void mouseClicked(MouseEvent e) {
             Ecran_Galerie test = new Ecran_Galerie();
             test.setVisible(true);
-            try {
+
+            /*try {
                 AjoutImage.tabLien = deserialisation();
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -74,7 +75,7 @@ public class Ecran extends JFrame {
                 ex.printStackTrace();
                 System.out.println("Classe non trouvée");
             }
-            AjoutImage.tableau = toImage(AjoutImage.tabLien);
+            AjoutImage.tableau = toImage(AjoutImage.tabLien);*/
             dispose();
         }
 
@@ -83,7 +84,7 @@ public class Ecran extends JFrame {
         }
     }
 
-    public String[] deserialisation () throws IOException, ClassNotFoundException {
+   /* public String[] deserialisation () throws IOException, ClassNotFoundException {
 
         FileInputStream fis = null;
         try {
@@ -111,7 +112,7 @@ public class Ecran extends JFrame {
 
 
     return toString;
-    }
+    }*/
 
     public ImageIcon[] ajoutImage(ImageIcon[] tableau, ImageIcon image) {
 
