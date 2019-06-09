@@ -173,6 +173,7 @@ public class Ecran_Contact extends JFrame {
                         // la ligne 0 est réservée à l'image de contact (plutôt une icône vu la taille de chaque ligne)
                     }
 
+
                 }
 
 
