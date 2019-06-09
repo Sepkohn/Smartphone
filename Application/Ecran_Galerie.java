@@ -6,6 +6,7 @@ import java.io.*;
 
 public class Ecran_Galerie extends JFrame {
 
+
     ImageIcon[] tableau = new ImageIcon[0];
     static String[] tabLien = new String[0];
 
@@ -15,7 +16,7 @@ public class Ecran_Galerie extends JFrame {
     JButton cancel = new JButton("Cancel");
 
 
-    //GridLayout centerGrid = new GridLayout(0, 3, 1, 1);
+    GridLayout centerGrid = new GridLayout(0, 3, 1, 1);
 
 
     JPanel south = new JPanel();
@@ -23,7 +24,9 @@ public class Ecran_Galerie extends JFrame {
     JPanel center = new JPanel();
 
 
+
     public Ecran_Galerie() {
+
 
         setResizable(false);
 
@@ -35,7 +38,6 @@ public class Ecran_Galerie extends JFrame {
         tableau = misAjour(tabLien);
         }
 
-
         center.removeAll();
         center.setSize(getMinimumSize());
         center.setMaximumSize(getMaximumSize());
@@ -44,6 +46,7 @@ public class Ecran_Galerie extends JFrame {
             JLabel label = new JLabel(tableau[i]);
             center.add(label);
         }
+
 
 
         north.add(plus);
@@ -57,7 +60,7 @@ public class Ecran_Galerie extends JFrame {
         //centerGrid.addLayoutComponent(null, new JLabel(image));
         //center.add(new JLabel(image));
 
-        add(new JScrollPane(center), BorderLayout.CENTER);
+        add(new JScrollPane(center, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
 
 
 

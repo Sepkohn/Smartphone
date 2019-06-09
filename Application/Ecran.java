@@ -63,19 +63,18 @@ public class Ecran extends JFrame {
         }
 
         public void mouseClicked(MouseEvent e) {
-            Ecran_Galerie test = new Ecran_Galerie();
-            test.setVisible(true);
-
-            /*try {
-                AjoutImage.tabLien = deserialisation();
+            try {
+                Ecran_Galerie.tabLien = deserialisation();
             } catch (IOException ex) {
                 ex.printStackTrace();
-                System.out.println("Import Export exception");
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
                 System.out.println("Classe non trouvée");
             }
-            AjoutImage.tableau = toImage(AjoutImage.tabLien);*/
+
+            Ecran_Galerie test = new Ecran_Galerie();
+            test.setVisible(true);
+            
             dispose();
         }
 
@@ -84,35 +83,37 @@ public class Ecran extends JFrame {
         }
     }
 
-   /* public String[] deserialisation () throws IOException, ClassNotFoundException {
+   public String[] deserialisation () throws IOException, ClassNotFoundException {
 
         FileInputStream fis = null;
         try {
-            // fis = new FileInputStream("C:/temp/Smartphone/Out/production/Smartphone/Images/save.ser");
             fis = new FileInputStream("C:/temp/Smartphone/Images/save.ser");
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("fichier pas trouvé");
         }
-        ObjectInputStream ois = new ObjectInputStream(fis);
 
-        DataInputStream ds = new DataInputStream(ois);
+        DataInputStream ds = new DataInputStream(fis);
 
-        String getliens = ds.readUTF();
+        String getLiens = new String();
+        while(ds.available()>0){
+            char c = ds.readChar();
+            getLiens +=c ;
+        }
+
 
         String[] toString =new String[0];
 
-        if(getliens!=null){
-        toString = getliens.split(" ");}
+        if(getLiens!=null){
+        toString = getLiens.split(" ");
+        }
 
         ds.close();
-        ois.close();
+        fis.close();
 
 
     return toString;
-    }*/
+    }
 
     public ImageIcon[] ajoutImage(ImageIcon[] tableau, ImageIcon image) {
 
