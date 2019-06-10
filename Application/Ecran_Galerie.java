@@ -16,12 +16,12 @@ public class Ecran_Galerie extends JFrame {
     JButton cancel = new JButton("Cancel");
 
 
-    GridLayout centerGrid = new GridLayout(0, 3, 1, 1);
+
 
 
     JPanel south = new JPanel();
     JPanel north = new JPanel();
-    JPanel center = new JPanel();
+    JPanel center = new JPanel(new GridLayout(0, 3,1,10));
 
 
 
@@ -115,7 +115,8 @@ public class Ecran_Galerie extends JFrame {
     public ImageIcon[] misAjour (String[] tabLien){
         ImageIcon[] tableau = new ImageIcon[tabLien.length];
         for(int i =0;i<tabLien.length;i++){
-            ImageIcon image = new ImageIcon(new ImageIcon(tabLien[i]).getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
+            ImageIcon image = new ImageIcon(new ImageIcon(tabLien[i]).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+
             tableau[i]=image;
         }
 
