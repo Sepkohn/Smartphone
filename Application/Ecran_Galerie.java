@@ -15,17 +15,20 @@ public class Ecran_Galerie extends JFrame {
     JButton moins = new JButton("-");
     JButton cancel = new JButton("Cancel");
 
-
-
+    GridBagLayout gbl = new GridBagLayout();
 
 
     JPanel south = new JPanel();
     JPanel north = new JPanel();
-    JPanel center = new JPanel(new GridLayout(0, 3,1,10));
+    JPanel center = new JPanel(gbl);
 
 
 
     public Ecran_Galerie() {
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = gbc.gridy = 0;
+
 
 
         setResizable(false);
@@ -42,9 +45,28 @@ public class Ecran_Galerie extends JFrame {
         center.setSize(getMinimumSize());
         center.setMaximumSize(getMaximumSize());
 
+        int x = 0;
+        int y = 0;
+
         for(int i = 0; i<tableau.length;i++) {
             JLabel label = new JLabel(tableau[i]);
-            center.add(label);
+
+            gbc.gridx = x;
+            gbc.gridy = y;
+            gbc.gridwidth = gbc.gridheight = 1;
+            gbc.fill = GridBagConstraints.VERTICAL;
+            gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+
+
+            center.add(label, gbc);
+
+            if(x == 3){
+                y+=1;
+                x=0;
+            }
+            else{
+                x+=1;
+            }
         }
 
 
@@ -60,7 +82,7 @@ public class Ecran_Galerie extends JFrame {
         //centerGrid.addLayoutComponent(null, new JLabel(image));
         //center.add(new JLabel(image));
 
-        add(new JScrollPane(center, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
+        add(new JScrollPane(center, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
 
 
 
@@ -115,7 +137,7 @@ public class Ecran_Galerie extends JFrame {
     public ImageIcon[] misAjour (String[] tabLien){
         ImageIcon[] tableau = new ImageIcon[tabLien.length];
         for(int i =0;i<tabLien.length;i++){
-            ImageIcon image = new ImageIcon(new ImageIcon(tabLien[i]).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+            ImageIcon image = new ImageIcon(new ImageIcon(tabLien[i]).getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 
             tableau[i]=image;
         }
