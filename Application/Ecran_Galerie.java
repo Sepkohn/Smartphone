@@ -28,6 +28,12 @@ public class Ecran_Galerie extends JFrame {
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.gridheight =1;
+        gbc.weighty = 0;
+        gbc.weightx = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+
 
 
 
@@ -50,17 +56,21 @@ public class Ecran_Galerie extends JFrame {
 
         for(int i = 0; i<tableau.length;i++) {
             JLabel label = new JLabel(tableau[i]);
+            ImageIcon back = tableau[i];
+
+           JButton buton = new JButton();
+           buton.setIcon(back);
+           buton.setSize(90,90);
+
 
             gbc.gridx = x;
             gbc.gridy = y;
-            gbc.gridwidth = gbc.gridheight = 1;
-            gbc.fill = GridBagConstraints.VERTICAL;
-            gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+            gbc.weightx =0;
+            gbc.weighty = 0;
 
-
-            center.add(label, gbc);
-
-            if(x == 3){
+            //center.add(label, gbc);
+            center.add(buton, gbc);
+            if(x == 2){
                 y+=1;
                 x=0;
             }
@@ -107,16 +117,36 @@ public class Ecran_Galerie extends JFrame {
 
 
             if (source == plus) {
-                AjoutImage nouveau = new AjoutImage();
+                /*AjoutImage nouveau = new AjoutImage();
                 nouveau.setVisible(true);
                 //nouveau.setLocation(.getLocation());
-                dispose();
+                dispose();*/
+
+                JFileChooser search = new JFileChooser();
+                search.setSize(200,400);
+                search.setMultiSelectionEnabled(true);
+                search.setMaximumSize(new Dimension(400,800));
+                int retour = search.showDialog(getParent(), "validate");
+                if(retour == JFileChooser.APPROVE_OPTION){
+                    File[] serieImage = search.getSelectedFiles();
+                    for(int i = 0;i<serieImage.length;i++){
+                        tabLien = ajoutLien(tabLien, serieImage[i].getAbsolutePath());
+                    }
+                    Ecran_Galerie.tabLien = tabLien;
+
+                    String[] serialisable = tabLien;
+
+                    serialisation(serialisable);
+
+                    Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+                    miseAjour.setVisible(true);
+                }
             }
 
             if (source == moins) {
                 SupprimeImage enleve = new SupprimeImage();
                 enleve.setVisible(true);
-                //nouveau.setLocation(.getLocation());
                 dispose();
             }
             if (source == cancel) {
@@ -127,6 +157,10 @@ public class Ecran_Galerie extends JFrame {
 
                 dispose();
             }
+
+            /*if(source==this.buton){
+
+            }*/
 
 
         }
@@ -151,6 +185,44 @@ public class Ecran_Galerie extends JFrame {
 
     public Dimension getMinimumSize() {
         return new Dimension(300, 800);
+    }
+
+    public String [] ajoutLien (String[] tableau, String lien){
+
+        String[] tableau2  = new String[tableau.length+1];
+
+        for (int i = 0; i < tableau.length; i++) {
+            tableau2[i] = tableau[i];
+        }
+        tableau2[tableau2.length - 1] = lien;
+
+        return tableau2;
+    }
+
+
+    public void serialisation(String[] tableau) {
+
+        File fichier;
+        fichier = new File("C:/temp/Smartphone/Images/save.ser");
+        fichier.delete();
+
+        try {
+            FileOutputStream fos = new FileOutputStream(fichier);
+
+            DataOutputStream ds = new DataOutputStream(fos);
+
+
+            for (int i = 0; i < tableau.length; i++) {
+                String image = tableau[i];
+                ds.writeChars(image +" ");
+            }
+
+            ds.close();
+            fos.close();
+
+        } catch (IOException e) {
+            System.out.println("erreur");
+        }
     }
 
 }
