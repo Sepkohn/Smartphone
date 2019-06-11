@@ -11,31 +11,54 @@ public class AjoutImage extends JFrame implements Serializable {
     JTextArea aide = new JTextArea("Insert image link");
 
     JTextField lien = new JTextField();
+    JFileChooser search = new JFileChooser();
+
 
     JButton ok = new JButton("OK");
 
     JButton cancel = new JButton("Cancel");
 
     JPanel south = new JPanel();
+    JPanel center = new JPanel();
 
     public AjoutImage() {
 
+        search.setSize(200,400);
+        search.setMultiSelectionEnabled(true);
+        int retour = search.showDialog(getParent(), "validate");
+        if(retour == JFileChooser.APPROVE_OPTION){
+            File[] serieImage = search.getSelectedFiles();
+            for(int i = 0;i<serieImage.length;i++){
+                tabLien = ajoutLien(tabLien, serieImage[i].getAbsolutePath());
+            }
+            Ecran_Galerie.tabLien = tabLien;
 
+            String[] serialisable = tabLien;
+
+            serialisation(serialisable);
+
+            Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+            miseAjour.setVisible(true);
+        }
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setSize(400, 800);
         setLocationRelativeTo(null);
 
-        south.add(ok);
-        south.add(cancel);
+        //south.add(ok);
+        //south.add(cancel);
 
-        add(aide, BorderLayout.NORTH);
-        add(lien, BorderLayout.CENTER);
-        add(south, BorderLayout.SOUTH);
 
-        ok.addMouseListener(new EcouteurAdd());
-        cancel.addMouseListener(new EcouteurAdd());
+
+        //add(aide, BorderLayout.NORTH);
+        //add(search);
+       // add(south, BorderLayout.SOUTH);
+
+        //ok.addMouseListener(new EcouteurAdd());
+        //cancel.addMouseListener(new EcouteurAdd());
+
 
     }
 

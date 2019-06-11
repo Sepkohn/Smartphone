@@ -74,7 +74,7 @@ public class Ecran extends JFrame {
 
             Ecran_Galerie test = new Ecran_Galerie();
             test.setVisible(true);
-            
+
             dispose();
         }
 
@@ -91,9 +91,12 @@ public class Ecran extends JFrame {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("fichier pas trouvé");
+
+            return new String[0] ;
         }
 
         DataInputStream ds = new DataInputStream(fis);
+
 
         String getLiens = new String();
         while(ds.available()>0){
