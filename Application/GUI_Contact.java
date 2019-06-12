@@ -11,6 +11,7 @@ class GUI_Contact extends JPanel {
 
     public GUI_Contact() {
         JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
         bottomPanel.setSize(400,200);
         bottomPanel.add(Box.createVerticalStrut(10));
         bottomPanel.add(buttonPanel);
@@ -19,7 +20,8 @@ class GUI_Contact extends JPanel {
 
 
         setLayout(new BorderLayout());
-        add(displayPanel, BorderLayout.CENTER);
+        //laxout de la fenêtre (voir s'il faut changer encore)
+        add(displayPanel, BorderLayout.PAGE_END);
         add(bottomPanel, BorderLayout.SOUTH);
 
 
@@ -33,6 +35,7 @@ class GUI_Contact extends JPanel {
 
                 displayPanel.addRow(Image,Nom, Prenom, Numero);
             }
+
         });
     }
 }

@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 
 class ButtonAjouterContact extends JPanel {
-    private JButton addInfoButton = new JButton("Add Information");
+    private  JButton AnnulerContact = new JButton("Retour");
+    private JButton addInfoButton = new JButton("Ajouter Contact");
 
     public ButtonAjouterContact() {
         add(addInfoButton);
