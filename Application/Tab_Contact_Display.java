@@ -1,8 +1,9 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.*;
 
-class Tab_Contact_Display extends JPanel {
+class Tab_Contact_Display extends JPanel implements Serializable {
     private String[] COLUMNS = {"Image","Nom", "Prénom","Numero"}; {
 
         final long serialVersionUID = 1L;
@@ -38,6 +39,28 @@ class Tab_Contact_Display extends JPanel {
         row[3] = Numero;
 
         model.addRow(row);
+
+        try {
+            ObjectOutputStream Ecrire_fichier = new ObjectOutputStream(new FileOutputStream("C:/temp/Smartphone/contacts.ser"));
+
+            Ecrire_fichier.writeObject(row);
+
+            Ecrire_fichier.close();
+
+            //recover updated data (avec le tableau dispo)
+            ObjectInputStream Recover_File = new ObjectInputStream(new FileInputStream("C:/temp/Smartphone/contacts.ser"));
+
+            Tab_Contact_Display[] data_recover=(Tab_Contact_Display[]) Recover_File.readObject();
+
+
+            Recover_File.close();
+
+
+
+        }catch (Exception e){
+
+
+        }
 
     }
 

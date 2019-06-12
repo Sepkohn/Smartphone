@@ -25,7 +25,7 @@ class Contact_Data_Extract extends JPanel {
 
 
     }
-    //cette fonction en marche pas...
+    //cette fonction en marche pas... (imagechamp)
     public String getImage() { return imagechamp.getText();}
 
     public String getNom() {
