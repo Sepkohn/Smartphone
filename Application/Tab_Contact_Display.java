@@ -39,16 +39,16 @@ class Tab_Contact_Display extends JPanel implements Serializable {
         row[3] = Numero;
 
         model.addRow(row);
-
+        //serialization de la table contact
         try {
-            ObjectOutputStream Ecrire_fichier = new ObjectOutputStream(new FileOutputStream("C:/temp/Smartphone/contacts.ser"));
+            ObjectOutputStream Ecrire_fichier = new ObjectOutputStream(new FileOutputStream("C:/temp/Smartphone/contacts.txt"));
 
             Ecrire_fichier.writeObject(row);
 
             Ecrire_fichier.close();
 
             //recover updated data (avec le tableau dispo)
-            ObjectInputStream Recover_File = new ObjectInputStream(new FileInputStream("C:/temp/Smartphone/contacts.ser"));
+            ObjectInputStream Recover_File = new ObjectInputStream(new FileInputStream("C:/temp/Smartphone/contacts.txt"));
 
             Tab_Contact_Display[] data_recover=(Tab_Contact_Display[]) Recover_File.readObject();
 

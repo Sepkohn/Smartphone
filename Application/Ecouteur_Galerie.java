@@ -19,3 +19,4 @@ public class Ecouteur_Galerie extends MouseAdapter {
         return image;
     }
 }
+

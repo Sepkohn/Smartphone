@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Constructor;
 
 class GUI_Contact extends JPanel {
     Tab_Contact_Display displayPanel = new Tab_Contact_Display();
@@ -10,19 +11,19 @@ class GUI_Contact extends JPanel {
 
 
     public GUI_Contact() {
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
-        bottomPanel.setSize(400,200);
-        bottomPanel.add(Box.createVerticalStrut(10));
-        bottomPanel.add(buttonPanel);
-        bottomPanel.add(Box.createHorizontalStrut(10));
-        bottomPanel.add(informationPanel);
+        JPanel Panel_Haut = new JPanel();
+        Panel_Haut.setLayout(new BoxLayout(Panel_Haut, BoxLayout.Y_AXIS));
+        Panel_Haut.setSize(400,200);
+        Panel_Haut.add(Box.createVerticalStrut(10));
+        Panel_Haut.add(buttonPanel);
+        Panel_Haut.add(Box.createHorizontalStrut(10));
+        Panel_Haut.add(informationPanel);
 
 
         setLayout(new BorderLayout());
         //laxout de la fenêtre (voir s'il faut changer encore)
         add(displayPanel, BorderLayout.PAGE_END);
-        add(bottomPanel, BorderLayout.SOUTH);
+        add(Panel_Haut, BorderLayout.SOUTH);
 
 
         buttonPanel.addInfoBtnAddActionListener(new ActionListener() {
@@ -37,5 +38,16 @@ class GUI_Contact extends JPanel {
             }
 
         });
+
+
+        buttonPanel.AnnulerContact(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+
+                
+
+            }
+        });
     }
+
 }
