@@ -8,23 +8,30 @@ class GUI_Contact extends JPanel {
     ButtonAjouterContact buttonPanel = new ButtonAjouterContact();
     Contact_Data_Extract informationPanel = new Contact_Data_Extract();
 
+
     public GUI_Contact() {
         JPanel bottomPanel = new JPanel();
+        bottomPanel.setSize(400,200);
+        bottomPanel.add(Box.createVerticalStrut(10));
         bottomPanel.add(buttonPanel);
         bottomPanel.add(Box.createHorizontalStrut(10));
         bottomPanel.add(informationPanel);
+
 
         setLayout(new BorderLayout());
         add(displayPanel, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
 
+
         buttonPanel.addInfoBtnAddActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                String lastName = informationPanel.getLastName();
-                String firstName = informationPanel.getFirstName();
+                String Image = informationPanel.getImage();
+                String Nom = informationPanel.getNom();
+                String Prenom = informationPanel.getPrenom();
+                String Numero = informationPanel.getNumero();
 
-                displayPanel.addRow(lastName, firstName);
+                displayPanel.addRow(Image,Nom, Prenom, Numero);
             }
         });
     }
