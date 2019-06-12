@@ -10,6 +10,7 @@ public class Ecouteur_Contact extends MouseAdapter {
     }
     public void mouseClicked(MouseEvent event) {
 
+
         Ecran_Contact Ecran = new Ecran_Contact();
         Ecran.setVisible(true);
         Ecran.setTitle("Contacts");

@@ -13,7 +13,7 @@ public class Ecran extends JFrame {
     private JButton cancel = new JButton("O");
     JButton galerie = new JButton("Galerie");
     JButton contact = new JButton("Contacts");
-    JButton undo = new JButton("Back");
+
 
     JPanel south = new JPanel();
     JPanel centre = new JPanel();
@@ -30,7 +30,7 @@ public class Ecran extends JFrame {
         setLocationRelativeTo(null);
 
         south.add(cancel);
-        south.add(undo);
+
 
         centre.add(galerie);
         centre.add(contact);
@@ -50,6 +50,7 @@ public class Ecran extends JFrame {
 
         galerie.addMouseListener(new Ecouteur_Galerie(this));
         contact.addMouseListener(new Ecouteur_Contact(this));
+        cancel.addMouseListener(new Ecouteur_Galerie(this));
 
         //ajout de l'horloge dans l'écran principal (AMK)
 
@@ -63,25 +64,31 @@ public class Ecran extends JFrame {
         }
 
         public void mouseClicked(MouseEvent e) {
-            try {
-                Ecran_Galerie.tabLien = deserialisation();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-                System.out.println("Classe non trouvée");
+            if (e.getSource() == galerie) {
+                try {
+                    Ecran_Galerie.tabLien = deserialisation();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                    System.out.println("Classe non trouvée");
+                }
+
+                Ecran_Galerie test = new Ecran_Galerie();
+                test.setVisible(true);
+
+                dispose();
+            }
+            if(e.getSource()==cancel){
+                dispose();
             }
 
-            Ecran_Galerie test = new Ecran_Galerie();
-            test.setVisible(true);
 
-            dispose();
         }
 
-        public Image ajouter(Image image) {
-            return image;
-        }
     }
+
+    
 
    public String[] deserialisation () throws IOException, ClassNotFoundException {
 
@@ -118,40 +125,4 @@ public class Ecran extends JFrame {
     return toString;
     }
 
-    public ImageIcon[] ajoutImage(ImageIcon[] tableau, ImageIcon image) {
-
-
-        ImageIcon[] tableau2 = new ImageIcon[tableau.length + 1];
-        for (int i = 0; i < tableau.length; i++) {
-            tableau2[i] = tableau[i];
-        }
-        tableau2[tableau2.length - 1] = image;
-
-        return tableau2;
-
-    }
-
-    public ImageIcon[] toImage(String[] toString) {
-
-        ImageIcon[] newTableau = new ImageIcon[0];
-
-        for(int i = 0; i<toString.length;i++){
-            ImageIcon im = new ImageIcon(toString[i]);
-            newTableau = ajoutImage(newTableau, im);
-        }
-
-        return newTableau;
-    }
-
-    public String [] ajoutLien (String[] tableau, String lien){
-
-        String[] tableau2  = new String[tableau.length+1];
-
-        for (int i = 0; i < tableau.length; i++) {
-            tableau2[i] = tableau[i];
-        }
-        tableau2[tableau2.length - 1] = lien;
-
-        return tableau2;
-    }
 }
