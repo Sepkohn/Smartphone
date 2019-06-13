@@ -32,7 +32,7 @@ class Tab_Contact_Display extends JPanel implements Serializable {
     }
 
 
-    public void addRow(String Image,String Nom, String Prenom, String Numero) {
+    protected void addRow(String Image,String Nom, String Prenom, String Numero) {
         Object[] row = new Object[4];
         row[0] = Image;
         row[1] = Nom;
@@ -62,6 +62,8 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
 
         }
+
+
 
 
 

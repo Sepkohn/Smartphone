@@ -1,11 +1,15 @@
 //import javafx.util.converter.ByteStringConverter;
-
 import javax.imageio.stream.ImageOutputStream;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
+import java.text.DateFormat;
+import java.time.Clock;
+import java.util.Date;
 
 
 public class Ecran extends JFrame {
@@ -17,7 +21,8 @@ public class Ecran extends JFrame {
 
     JPanel south = new JPanel();
     JPanel centre = new JPanel();
-
+    //panel barre etat
+    JPanel north = new JPanel();
 
 
     public Ecran() {
@@ -46,6 +51,7 @@ public class Ecran extends JFrame {
 
         add(south, BorderLayout.SOUTH);
         add(centre, BorderLayout.CENTER);
+        add(north, BorderLayout.NORTH);
 
 
         galerie.addMouseListener(new Ecouteur_Galerie(this));
@@ -54,10 +60,16 @@ public class Ecran extends JFrame {
 
         //ajout de l'horloge dans l'écran principal (AMK)
 
+        north.setSize(400, 200);
+        north.setVisible(true);
+        north.setForeground(Color.WHITE);
 
 
 
-    }
+        }
+
+      //  north.add(setContentPane(StatusBar.TimerThread));
+
 
     public class Ecouteur_Galerie extends MouseAdapter {
         public Ecouteur_Galerie(Ecran ecran) {

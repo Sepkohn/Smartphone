@@ -67,11 +67,11 @@ public class StatusBar implements Runnable {
                 new SimpleDateFormat("EEE, d MMM yyyy");
         protected SimpleDateFormat timeFormat =
                 new SimpleDateFormat("h:mm:ss a");
-
         public TimerThread(JLabel dateLabel, JLabel timeLabel) {
             this.dateLabel = dateLabel;
             this.timeLabel = timeLabel;
             this.isRunning = true;
+
         }
 
         @Override

@@ -13,19 +13,24 @@ class GUI_Contact extends JPanel {
 
 
     public GUI_Contact() {
+
+        //Gestion des panels de l'app
         JPanel Panel_Haut = new JPanel();
+        Panel_Haut.setSize(383, 200);
         Panel_Haut.setLayout(new BoxLayout(Panel_Haut, BoxLayout.Y_AXIS));
-        Panel_Haut.setSize(400, 200);
+        Panel_Haut.setBorder(BorderFactory.createTitledBorder("Fonctions"));
         Panel_Haut.add(Box.createVerticalStrut(10));
         Panel_Haut.add(buttonPanel);
+        buttonPanel.setBounds(100,200,2,50);
         Panel_Haut.add(Box.createHorizontalStrut(10));
         Panel_Haut.add(informationPanel);
 
-
         setLayout(new BorderLayout());
-        //laxout de la fenêtre (voir s'il faut changer encore)
+        //layout de la fenêtre (voir s'il faut changer encore)
         add(displayPanel, BorderLayout.PAGE_END);
         add(Panel_Haut, BorderLayout.SOUTH);
+
+
 
 
         //selectionner un champ dans le tableau
@@ -44,6 +49,8 @@ class GUI_Contact extends JPanel {
             }
         });
 
+
+        //ajouter une ligne dans le tableau (ajouter contact)
         buttonPanel.addInfoBtnAddActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -57,10 +64,8 @@ class GUI_Contact extends JPanel {
 
         });
 
-
-        buttonPanel.AnnulerContact(new
-
-    ActionListener() {
+        //"retour" à l'écran principal
+        buttonPanel.AnnulerContact(new ActionListener() {
 
         public void actionPerformed (ActionEvent d){
 
@@ -72,7 +77,7 @@ class GUI_Contact extends JPanel {
     });
 
 
-
+        //supprimer la ligne du tableau (supprimer contact)
         buttonPanel.DeleteContact(new ActionListener() {
 
             public void actionPerformed(ActionEvent a) {
@@ -89,9 +94,7 @@ class GUI_Contact extends JPanel {
         });
 
 
-
-
-
+        //corriger, màle contact déjà saisi
         buttonPanel.UpdateContact(new ActionListener() {
 
             public void actionPerformed(ActionEvent b) {
@@ -113,7 +116,6 @@ class GUI_Contact extends JPanel {
         });
 
     }
-
 
 
 }
