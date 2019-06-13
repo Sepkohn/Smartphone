@@ -1,14 +1,21 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-class ButtonAjouterContact extends JPanel{
+class ButtonsContact extends JPanel{
     private  JButton AnnulerContact = new JButton("Retour");
     private JButton addInfoButton = new JButton("Ajouter Contact");
+    private JButton SupprimerContact = new JButton("Supprimer Contact");
+    private JButton UpdateContact = new JButton("MàJ Contact");
 
 
-    public ButtonAjouterContact() {
+
+
+    public ButtonsContact() {
         add(addInfoButton);
         add(AnnulerContact);
+        add(SupprimerContact);
+        add(UpdateContact);
+
     }
 
     public void addInfoBtnAddActionListener(ActionListener listener) {
@@ -21,5 +28,17 @@ class ButtonAjouterContact extends JPanel{
         AnnulerContact.addActionListener(listen);
 
     }
+
+    public void DeleteContact (ActionListener tolisten) {
+
+        SupprimerContact.addActionListener(tolisten);
+    }
+
+    public void UpdateContact (ActionListener heylisten){
+
+        UpdateContact.addActionListener(heylisten);
+
+    }
+
 
 }

@@ -10,7 +10,7 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
     }
 
-    private DefaultTableModel model = new DefaultTableModel(COLUMNS, 0){
+    protected DefaultTableModel model = new DefaultTableModel(COLUMNS, 0){
 
     //le tableau n'est pas editable
     @Override
@@ -19,12 +19,13 @@ class Tab_Contact_Display extends JPanel implements Serializable {
     }
 
 };
-    private JTable table = new JTable(model);
+    protected JTable table = new JTable(model);
 
 
     public Tab_Contact_Display() {
         setLayout(new BorderLayout());
         add(new JScrollPane(table));
+        //couleurs table...
         setBackground(Color.BLACK);
         setForeground(Color.WHITE);
 
@@ -61,6 +62,8 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
 
         }
+
+
 
     }
 
