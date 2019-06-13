@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path=""/>
+	<classpathentry kind="src" path="Application"/>
+	<classpathentry kind="src" path="BarreEtat"/>
+	<classpathentry kind="src" path="Test"/>
+	<classpathentry kind="var" path="MAVEN_REPOSITORY/org/junit/jupiter/junit-jupiter-api/5.5.0-RC1/junit-jupiter-api-5.5.0-RC1.jar"/>
+	<classpathentry kind="output" path="Out/production/Smartphone"/>
 </classpath>
