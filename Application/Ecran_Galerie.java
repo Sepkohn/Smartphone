@@ -135,42 +135,44 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                     miseAjour.setVisible(true);
 
                     dispose();
-                } else if (source == moins) {
-
-
-                    JFileChooser erase = new JFileChooser();
-                    erase.setSize(200, 400);
-                    erase.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                    erase.setMultiSelectionEnabled(false);
-                    erase.setMaximumSize(new Dimension(400, 800));
-
-                    erase.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
-
-
-                    int getBack = search.showDialog(null, "validate");
-
-                    if (getBack == JFileChooser.APPROVE_OPTION) {
-
-                        tabLien = supprimeLiens(tabLien, search.getSelectedFile().getAbsolutePath());
-
-                        String[] serialisable = tabLien;
-
-                        serialisation(serialisable);
-
-                        Ecran_Galerie miseAjour = new Ecran_Galerie();
-
-                        miseAjour.setVisible(true);
-
-                        dispose();
-                    } else if (source == cancel) {
-
-                        Ecran principal = new Ecran();
-
-                        principal.setVisible(true);
-
-                        dispose();
-                    }
                 }
+            }
+            if (source == moins) {
+
+
+                JFileChooser search = new JFileChooser();
+                search.setSize(200, 400);
+                search.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                search.setMultiSelectionEnabled(false);
+                search.setMaximumSize(new Dimension(400, 800));
+
+                search.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
+
+
+                int getBack = search.showDialog(null, "validate");
+
+                if (getBack == JFileChooser.APPROVE_OPTION) {
+
+                    tabLien = supprimeLiens(tabLien, search.getSelectedFile().getAbsolutePath());
+
+                    String[] serialisable = tabLien;
+
+                    serialisation(serialisable);
+
+                    Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+                    miseAjour.setVisible(true);
+
+                    dispose();
+                }
+            }
+            if (source == cancel) {
+
+                Ecran principal = new Ecran();
+
+                principal.setVisible(true);
+
+                dispose();
             }
         }
     }
