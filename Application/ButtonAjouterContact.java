@@ -11,10 +11,14 @@ class ButtonsContact extends JPanel{
 
 
     public ButtonsContact() {
+
+        //boutons pour intereagir avec le tableau
+
         add(addInfoButton);
         add(AnnulerContact);
         add(SupprimerContact);
         add(UpdateContact);
+
 
     }
 
