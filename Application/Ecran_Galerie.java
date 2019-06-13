@@ -145,6 +145,8 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
                     miseAjour.setVisible(true);
                 }
+
+
             }
 
 

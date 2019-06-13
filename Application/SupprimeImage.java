@@ -130,6 +130,7 @@ public class SupprimeImage extends JFrame implements Serializable{
                 } else if (i == liens.length - 1) {
 
                     JOptionPane.showMessageDialog(null, "Erreur : image non trouvée");
+                    setVisible(true);
 
                     newTab = liens;
                 }

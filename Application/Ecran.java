@@ -86,9 +86,6 @@ public class Ecran extends JFrame {
                     Ecran_Galerie.tabLien = deserialisation();
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                } catch (ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                    System.out.println("Classe non trouvée");
                 }
 
                 Ecran_Galerie test = new Ecran_Galerie();
@@ -110,14 +107,15 @@ public class Ecran extends JFrame {
 
 
 
-   public String[] deserialisation () throws IOException, ClassNotFoundException {
+   public String[] deserialisation () throws IOException, FilenotFound {
 
         FileInputStream fis = null;
         try {
             fis = new FileInputStream("C:/temp/Smartphone/Images/Serialisation/image.ser");
-        } catch (FileNotFoundException e) {
+        } catch (FilenotFound e) {
+            dispose();
+            new FilenotFound();
             e.printStackTrace();
-            System.out.println("fichier pas trouvé");
 
             return new String[0] ;
         }
