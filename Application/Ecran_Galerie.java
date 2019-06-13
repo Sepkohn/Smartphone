@@ -59,19 +59,13 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
         for (int i = 0; i < tableau.length; i++) {
             JLabel label = new JLabel(tableau[i]);
-            //ImageIcon back = tableau[i];
-            // JButton image = new JButton(back);
-
 
             gbc.gridx = x;
             gbc.gridy = y;
             gbc.weightx = 0;
             gbc.weighty = 0;
 
-            //center.add(label, gbc);
             center.add(label, gbc);
-
-            //center.add(buton, gbc);
 
 
             if (x == 2) {
@@ -89,9 +83,6 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
         add(north, BorderLayout.NORTH);
 
-
-        //centerGrid.addLayoutComponent(null, new JLabel(image));
-        //center.add(new JLabel(image));
 
         add(new JScrollPane(center, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
 
@@ -144,66 +135,46 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                     miseAjour.setVisible(true);
 
                     dispose();
+                } else if (source == moins) {
+
+
+                    JFileChooser erase = new JFileChooser();
+                    erase.setSize(200, 400);
+                    erase.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                    erase.setMultiSelectionEnabled(false);
+                    erase.setMaximumSize(new Dimension(400, 800));
+
+                    erase.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
+
+
+                    int getBack = search.showDialog(null, "validate");
+
+                    if (getBack == JFileChooser.APPROVE_OPTION) {
+
+                        tabLien = supprimeLiens(tabLien, search.getSelectedFile().getAbsolutePath());
+
+                        String[] serialisable = tabLien;
+
+                        serialisation(serialisable);
+
+                        Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+                        miseAjour.setVisible(true);
+
+                        dispose();
+                    } else if (source == cancel) {
+
+                        Ecran principal = new Ecran();
+
+                        principal.setVisible(true);
+
+                        dispose();
+                    }
                 }
-
             }
-
-            if (source == moins) {
-
-
-                JFileChooser search = new JFileChooser();
-                search.setSize(200, 400);
-                search.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                search.setMultiSelectionEnabled(false);
-                search.setMaximumSize(new Dimension(400, 800));
-
-                search.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
-
-
-                int retour = search.showDialog(null, "validate");
-
-                if (retour == JFileChooser.APPROVE_OPTION) {
-
-                    tabLien = supprimeLiens(tabLien, search.getSelectedFile().getAbsolutePath());
-
-                    String[] serialisable = tabLien;
-
-                    serialisation(serialisable);
-
-                    Ecran_Galerie miseAjour = new Ecran_Galerie();
-
-                    miseAjour.setVisible(true);
-
-                    dispose();
-                }
-            }
-            if (source == cancel) {
-
-                Ecran principal = new Ecran();
-
-                principal.setVisible(true);
-
-                dispose();
-            }
-
         }
-
-
     }
 
-    public class Ecouteur_Image extends MouseAdapter {
-
-        public Ecouteur_Image(Ecran_Galerie ecran) {
-
-        }
-
-        public void mouseClicked(MouseEvent e) {
-            // TODO Auto-generated method stub
-
-            Object source = e.getSource();
-
-        }
-    }
 
     public ImageIcon[] misAjour(String[] tabLien) {
         ImageIcon[] tableau = new ImageIcon[tabLien.length];
@@ -307,7 +278,7 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
     public String[] supprimeLien(String[] liens, String link) {
 
-        String[] newTab = new String[0];
+        String[] newTab ;
 
         int count = 0;
 
@@ -342,4 +313,6 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
 
     }
+
+
 }
