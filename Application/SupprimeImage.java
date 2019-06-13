@@ -81,7 +81,7 @@ public class SupprimeImage extends JFrame implements Serializable{
     public void serialisation(String[] tableau) {
 
             File fichier;
-            fichier = new File("C:/temp/Smartphone/Images/save.ser");
+            fichier = new File("C:/temp/Smartphone/Images/Serialisation/image.ser");
             fichier.delete();
 
         try {
@@ -128,27 +128,16 @@ public class SupprimeImage extends JFrame implements Serializable{
                     count++;
 
                 } else if (i == liens.length - 1) {
-                    JFrame erreur = new JFrame();
-                    erreur.setVisible(true);
-                    setLocationRelativeTo(null);
-                    erreur.setSize(400, 100);
 
-
-                    JTextArea message = new JTextArea("Erreur : image non trouvée");
-                    erreur.add(message);
+                    JOptionPane.showMessageDialog(null, "Erreur : image non trouvée");
 
                     newTab = liens;
                 }
             }
         }
         else {
-            JFrame erreur = new JFrame();
-            erreur.setVisible(true);
-            setLocationRelativeTo(this);
-            erreur.setSize(400, 100);
 
-            JTextArea message = new JTextArea("Erreur : le tableau est vide!!");
-            erreur.add(message);
+           JOptionPane.showMessageDialog(null, "Erreur : le tableau est vide!!");
 
             newTab = liens;
 

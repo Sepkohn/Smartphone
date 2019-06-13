@@ -1,10 +1,13 @@
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import java.awt.image.ImageObserver;
 import java.io.*;
+import java.text.AttributedCharacterIterator;
 
-public class Ecran_Galerie extends JFrame implements Serializable{
+public class Ecran_Galerie extends JFrame implements Serializable {
 
 
     ImageIcon[] tableau = new ImageIcon[0];
@@ -23,18 +26,16 @@ public class Ecran_Galerie extends JFrame implements Serializable{
     JPanel center = new JPanel(gbl);
 
 
-
     public Ecran_Galerie() {
+
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = gbc.gridy = 0;
         gbc.gridwidth = 1;
-        gbc.gridheight =1;
+        gbc.gridheight = 1;
         gbc.weighty = 0;
         gbc.weightx = 0;
         gbc.anchor = GridBagConstraints.WEST;
-
-
 
 
         setResizable(false);
@@ -43,9 +44,10 @@ public class Ecran_Galerie extends JFrame implements Serializable{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        if(tabLien!=null){
-        tableau = misAjour(tabLien);
+        if (tabLien != null) {
+            tableau = misAjour(tabLien);
         }
+
 
         center.removeAll();
         center.setSize(getMinimumSize());
@@ -54,30 +56,33 @@ public class Ecran_Galerie extends JFrame implements Serializable{
         int x = 0;
         int y = 0;
 
-        for(int i = 0; i<tableau.length;i++) {
-            JLabel label = new JLabel(tableau[i]);
-            ImageIcon back = tableau[i];
-
-           JButton buton = new JButton();
-           buton.setIcon(back);
-           buton.setSize(90,90);
+            for (int i = 0; i < tableau.length; i++) {
+                JLabel label = new JLabel(tableau[i]);
+                //ImageIcon back = tableau[i];
+               // JButton image = new JButton(back);
 
 
-            gbc.gridx = x;
-            gbc.gridy = y;
-            gbc.weightx =0;
-            gbc.weighty = 0;
 
-            //center.add(label, gbc);
-            center.add(buton, gbc);
-            if(x == 2){
-                y+=1;
-                x=0;
+                gbc.gridx = x;
+                gbc.gridy = y;
+                gbc.weightx = 0;
+                gbc.weighty = 0;
+
+                //center.add(label, gbc);
+                center.add(label, gbc);
+
+               //center.add(buton, gbc);
+
+
+                if (x == 2) {
+                    y += 1;
+                    x = 0;
+                } else {
+                    x += 1;
+                }
             }
-            else{
-                x+=1;
-            }
-        }
+
+
 
 
 
@@ -88,13 +93,10 @@ public class Ecran_Galerie extends JFrame implements Serializable{
         add(north, BorderLayout.NORTH);
 
 
-
         //centerGrid.addLayoutComponent(null, new JLabel(image));
         //center.add(new JLabel(image));
 
-        add(new JScrollPane(center, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
-
-
+        add(new JScrollPane(center, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
 
 
         add(cancel, BorderLayout.AFTER_LAST_LINE);
@@ -119,16 +121,18 @@ public class Ecran_Galerie extends JFrame implements Serializable{
             if (source == plus) {
 
                 JFileChooser search = new JFileChooser();
-                search.setSize(200,400);
+                search.setSize(200, 400);
+                search.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 search.setMultiSelectionEnabled(true);
-                search.setMaximumSize(new Dimension(400,800));
+                search.setMaximumSize(new Dimension(400, 800));
+
                 search.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
 
 
                 int retour = search.showDialog(getParent(), "validate");
-                if(retour == JFileChooser.APPROVE_OPTION){
+                if (retour == JFileChooser.APPROVE_OPTION) {
                     File[] serieImage = search.getSelectedFiles();
-                    for(int i = 0;i<serieImage.length;i++){
+                    for (int i = 0; i < serieImage.length; i++) {
                         tabLien = ajoutLien(tabLien, serieImage[i].getAbsolutePath());
                     }
                     Ecran_Galerie.tabLien = tabLien;
@@ -142,6 +146,7 @@ public class Ecran_Galerie extends JFrame implements Serializable{
                     miseAjour.setVisible(true);
                 }
             }
+
 
             if (source == moins) {
                 SupprimeImage enleve = new SupprimeImage();
@@ -161,13 +166,26 @@ public class Ecran_Galerie extends JFrame implements Serializable{
 
 
     }
+    public class Ecouteur_Image extends MouseAdapter {
 
-    public ImageIcon[] misAjour (String[] tabLien){
+        public Ecouteur_Image(Ecran_Galerie ecran) {
+
+        }
+
+        public void mouseClicked(MouseEvent e) {
+            // TODO Auto-generated method stub
+
+            Object source = e.getSource();
+
+        }
+    }
+
+    public ImageIcon[] misAjour(String[] tabLien) {
         ImageIcon[] tableau = new ImageIcon[tabLien.length];
-        for(int i =0;i<tabLien.length;i++){
-            ImageIcon image = new ImageIcon(new ImageIcon(tabLien[i]).getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+        for (int i = 0; i < tabLien.length; i++) {
+            ImageIcon image = new ImageIcon(new ImageIcon(tabLien[i]).getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 
-            tableau[i]=image;
+            tableau[i] = image;
         }
 
         return tableau;
@@ -181,9 +199,9 @@ public class Ecran_Galerie extends JFrame implements Serializable{
         return new Dimension(300, 800);
     }
 
-    public String [] ajoutLien (String[] tableau, String lien){
+    public String[] ajoutLien(String[] tableau, String lien) {
 
-        String[] tableau2  = new String[tableau.length+1];
+        String[] tableau2 = new String[tableau.length + 1];
 
         for (int i = 0; i < tableau.length; i++) {
             tableau2[i] = tableau[i];
@@ -197,7 +215,7 @@ public class Ecran_Galerie extends JFrame implements Serializable{
     public void serialisation(String[] tableau) {
 
         File fichier;
-        fichier = new File("C:/temp/Smartphone/Images/save.ser");
+        fichier = new File("C:/temp/Smartphone/Images/Serialisation/image.ser");
         fichier.delete();
 
         try {
@@ -208,7 +226,7 @@ public class Ecran_Galerie extends JFrame implements Serializable{
 
             for (int i = 0; i < tableau.length; i++) {
                 String image = tableau[i];
-                ds.writeChars(image +" ");
+                ds.writeChars(image + " ");
             }
 
             ds.close();
@@ -218,5 +236,6 @@ public class Ecran_Galerie extends JFrame implements Serializable{
             System.out.println("erreur");
         }
     }
+
 
 }

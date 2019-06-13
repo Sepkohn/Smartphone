@@ -94,7 +94,7 @@ public class Ecran extends JFrame {
 
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream("C:/temp/Smartphone/Images/save.ser");
+            fis = new FileInputStream("C:/temp/Smartphone/Images/Serialisation/image.ser");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("fichier pas trouvé");
@@ -106,6 +106,7 @@ public class Ecran extends JFrame {
 
 
         String getLiens = new String();
+
         while(ds.available()>0){
             char c = ds.readChar();
             getLiens +=c ;
@@ -115,8 +116,10 @@ public class Ecran extends JFrame {
         String[] toString =new String[0];
 
         if(getLiens!=null){
-        toString = getLiens.split(" ");
-        }
+
+                toString = getLiens.split(" ");
+
+         }
 
         ds.close();
         fis.close();
