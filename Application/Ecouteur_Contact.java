@@ -1,13 +1,18 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
+import java.lang.reflect.Constructor;
+import java.util.Vector;
 
 
-public class Ecouteur_Contact extends MouseAdapter {
+public class Ecouteur_Contact extends MouseAdapter implements Serializable{
+
+    Tab_Contact_Display.AccessibleJComponent model;
+
     public Ecouteur_Contact(Ecran ecran) {
 
     }
@@ -23,22 +28,29 @@ public class Ecouteur_Contact extends MouseAdapter {
         Ecran.setSize(400, 800);
         Ecran.setLocationRelativeTo(null);
 
-        //recover updated data (avec le tableau dispo)
+
+        //recover updated data to a JTable(deserialization)
 
         try {
-            ObjectInputStream Recover_File = new ObjectInputStream(new FileInputStream("C:/temp/Smartphone/contacts.txt"));
 
-            Tab_Contact_Display[] data_recover = (Tab_Contact_Display []) Recover_File.readObject();
+            FileInputStream filein = new FileInputStream("C:/temp/Smartphone/contacts.txt");
+
+            ObjectInputStream input = new ObjectInputStream(filein);
+
+            input.readObject();
+
+            input.close();
+
+            System.out.println("je n'arrive pas à lire");
 
 
         }catch (Exception e) {
 
+            e.printStackTrace();
+
         }
-        }
-
-
-
     }
+}
 
 
 
