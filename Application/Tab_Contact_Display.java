@@ -5,7 +5,7 @@ import java.io.*;
 
 class Tab_Contact_Display extends JPanel implements Serializable {
     private String[] COLUMNS = {"Image", "Nom", "Prénom", "Numero"};
-
+    //protected String[][] DATA = {"1","Arguello","Kevin","0899013990"};
     {
 
         final long serialVersionUID = 1L;

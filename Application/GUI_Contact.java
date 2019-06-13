@@ -40,7 +40,6 @@ class GUI_Contact extends JPanel {
                 super.mouseClicked(e);
 
                 int i = displayPanel.table.getSelectedRow();
-
                 informationPanel.imagechamp.setText(displayPanel.model.getValueAt(i, 0).toString());
                 informationPanel.nomchamp.setText(displayPanel.model.getValueAt(i, 1).toString());
                 informationPanel.prenomchamp.setText(displayPanel.model.getValueAt(i, 2).toString());
@@ -118,6 +117,7 @@ class GUI_Contact extends JPanel {
                 }
             }
         });
+
 
     }
 
