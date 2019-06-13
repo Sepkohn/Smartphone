@@ -146,9 +146,7 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                     dispose();
                 }
 
-
             }
-
 
             if (source == moins) {
 

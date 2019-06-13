@@ -37,11 +37,13 @@ public class Ecouteur_Contact extends MouseAdapter implements Serializable{
 
             ObjectInputStream input = new ObjectInputStream(filein);
 
+            System.out.println("je n'arrive pas à lire");
+
+
             input.readObject();
 
-            input.close();
 
-            System.out.println("je n'arrive pas à lire");
+            input.close();
 
 
         }catch (Exception e) {
