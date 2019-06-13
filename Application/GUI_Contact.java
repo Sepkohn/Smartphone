@@ -88,12 +88,12 @@ class GUI_Contact extends JPanel {
                     displayPanel.model.removeRow(i);
                 }
                 else{
+                    //message d'erreur
                     JOptionPane.showMessageDialog(null, "Merci de sélectionner un contact !");
 
                 }
             }
         });
-
 
 
         //corriger, màle contact déjà saisi
@@ -112,6 +112,7 @@ class GUI_Contact extends JPanel {
 
                 }
                 else{
+                    //message d'erreur
                     JOptionPane.showMessageDialog(null, "Merci de sélectionner un contact !");
 
                 }

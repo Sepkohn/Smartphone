@@ -18,7 +18,8 @@ class Tab_Contact_Display extends JPanel implements Serializable {
         return false;
     }
 
-};
+    };
+
     protected JTable table = new JTable(model);
 
 
@@ -48,24 +49,11 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
             Ecrire_fichier.close();
 
-            //recover updated data (avec le tableau dispo)
-            ObjectInputStream Recover_File = new ObjectInputStream(new FileInputStream("C:/temp/Smartphone/contacts.txt"));
-
-            Tab_Contact_Display[] data_recover=(Tab_Contact_Display[]) Recover_File.readObject();
-
-
-            Recover_File.close();
-
-
 
         }catch (Exception e){
 
 
         }
-
-
-
-
 
     }
 

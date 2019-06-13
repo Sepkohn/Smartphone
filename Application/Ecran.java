@@ -64,8 +64,6 @@ public class Ecran extends JFrame {
         north.setVisible(true);
         north.setForeground(Color.WHITE);
 
-
-
         }
 
       //  north.add(setContentPane(StatusBar.TimerThread));
@@ -73,6 +71,13 @@ public class Ecran extends JFrame {
 
     public class Ecouteur_Galerie extends MouseAdapter {
         public Ecouteur_Galerie(Ecran ecran) {
+        }
+
+        //quitter l'app pour de bon !
+        public void fermer() {
+
+            System.exit(0);
+            
         }
 
         public void mouseClicked(MouseEvent e) {
@@ -92,11 +97,14 @@ public class Ecran extends JFrame {
                 dispose();
             }
             if(e.getSource()==cancel){
-                dispose();
+
+                fermer();
+
             }
 
 
         }
+
 
     }
 
@@ -136,5 +144,6 @@ public class Ecran extends JFrame {
 
     return toString;
     }
+
 
 }
