@@ -135,16 +135,18 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                     miseAjour.setVisible(true);
 
                     dispose();
-                } else if (source == moins) {
+                }
+            }
+                if (source == moins) {
 
 
-                    JFileChooser erase = new JFileChooser();
-                    erase.setSize(200, 400);
-                    erase.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                    erase.setMultiSelectionEnabled(false);
-                    erase.setMaximumSize(new Dimension(400, 800));
+                    JFileChooser search = new JFileChooser();
+                    search.setSize(200, 400);
+                    search.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                    search.setMultiSelectionEnabled(false);
+                    search.setMaximumSize(new Dimension(400, 800));
 
-                    erase.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
+                    search.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
 
 
                     int getBack = search.showDialog(null, "validate");
@@ -163,7 +165,10 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
                         dispose();
 
-                    } else if (source == cancel) {
+                    }
+                }
+
+                    if (source == cancel) {
 
                         Ecran principal = new Ecran();
 
@@ -173,8 +178,8 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                     }
                 }
             }
-        }
-    }
+
+
 
 
     public ImageIcon[] misAjour(String[] tabLien) {
