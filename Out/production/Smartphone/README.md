@@ -7,7 +7,7 @@ Valentin, le 04.05.2019
  - Création de l'Ecouteur_Galerie et création de la nouvelle fenêtre lors du click sur le bouton.
 
  Valentin et Kevin, le 04.05.2019
- - création  de la branche "dev" dans GitHub et test de synchronisation avec Atom et GitHub for desktop
+ - création  de la branche "dev" dans GitHub et test de synchronisation avec Atom et GitHub for desktop (lien : https://github.com/Sepkohn/Smartphone.git)
  - divers test de synchronisation entre fichiers java
 
 Kevin le 10.05.2019
