@@ -162,6 +162,7 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                         miseAjour.setVisible(true);
 
                         dispose();
+
                     } else if (source == cancel) {
 
                         Ecran principal = new Ecran();

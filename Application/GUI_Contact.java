@@ -59,6 +59,7 @@ class GUI_Contact extends JPanel {
                 String Numero = informationPanel.getNumero();
 
                 displayPanel.addRow(Image, Nom, Prenom, Numero);
+
             }
 
         });

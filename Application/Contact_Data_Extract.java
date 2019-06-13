@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputMethodEvent;
 import java.io.File;
 
 class Contact_Data_Extract extends JPanel {
@@ -24,6 +23,8 @@ class Contact_Data_Extract extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Sélectionner une image");
+
+
                 JFileChooser search = new JFileChooser();
                 search.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 search.setMultiSelectionEnabled(true);
@@ -33,6 +34,20 @@ class Contact_Data_Extract extends JPanel {
                 search.setSize(400,400);
                 search.setMaximumSize(new Dimension(400, 800));
 
+
+                int getBack = search.showDialog(null, "validate");
+
+                if (getBack == JFileChooser.APPROVE_OPTION) {
+
+                    JLabel champimage = new JLabel();
+                    champimage.setIcon(new ImageIcon());
+
+                    
+                } else {
+                    // annuler insértion image
+                  search.setVisible(false);
+
+                }
 
 
             }
@@ -48,7 +63,6 @@ class Contact_Data_Extract extends JPanel {
         add(new JLabel("Prénom :"));
         add(prenomchamp);
         add(Box.createHorizontalStrut(5));
-
 
 
 

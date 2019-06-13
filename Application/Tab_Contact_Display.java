@@ -1,10 +1,12 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.io.*;
 
 class Tab_Contact_Display extends JPanel implements Serializable {
     private String[] COLUMNS = {"Image", "Nom", "Prénom", "Numero"};
+
     //protected String[][] DATA = {"1","Arguello","Kevin","0899013990"};
     {
 
@@ -39,15 +41,20 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
 
     protected void addRow(String Image, String Nom, String Prenom, String Numero) {
+
+        //ajout jlabel pour fit image dedans
+        //JLabel champimage = new JLabel();
+        //champimage.setIcon(new ImageIcon("pika.jpg"));
         Object[] row = new Object[4];
         row[0] = Image;
         row[1] = Nom;
         row[2] = Prenom;
         row[3] = Numero;
-
         model.addRow(row);
-        //serialization de la table contact
 
+       // table.getColumn("image").setCellRenderer(new LabelRenderer());
+
+        //serialization de la table contact
         try {
 
             FileOutputStream fileOut = new FileOutputStream("C:/temp/Smartphone/contacts.txt");
@@ -69,6 +76,18 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
     }
 
+
     }
+    //class permettant ajout de image
+   // class LabelRenderer implements TableCellRenderer{
+
+
+     //   @Override
+       // public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+
+
+         //   return (Component)value;
+//        }
+  //  }
 
 }

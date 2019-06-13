@@ -1,12 +1,10 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
-import java.lang.reflect.Constructor;
-import java.util.Vector;
+
+
 
 
 public class Ecouteur_Contact extends MouseAdapter implements Serializable{
@@ -40,10 +38,6 @@ public class Ecouteur_Contact extends MouseAdapter implements Serializable{
             ObjectInputStream input = new ObjectInputStream(filein);
 
             System.out.println("je n'arrive pas à lire");
-
-
-            input.readObject();
-
 
             input.close();
 
