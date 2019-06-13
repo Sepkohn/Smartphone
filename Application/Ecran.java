@@ -77,7 +77,7 @@ public class Ecran extends JFrame {
         public void fermer() {
 
             System.exit(0);
-            
+
         }
 
         public void mouseClicked(MouseEvent e) {
@@ -102,9 +102,7 @@ public class Ecran extends JFrame {
 
             }
 
-
         }
-
 
     }
 

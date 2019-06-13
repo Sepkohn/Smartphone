@@ -4,23 +4,28 @@ import java.awt.*;
 import java.io.*;
 
 class Tab_Contact_Display extends JPanel implements Serializable {
-    private String[] COLUMNS = {"Image","Nom", "Prénom","Numero"}; {
+    private String[] COLUMNS = {"Image", "Nom", "Prénom", "Numero"};
+
+    {
 
         final long serialVersionUID = 1L;
 
     }
 
-    protected DefaultTableModel model = new DefaultTableModel(COLUMNS, 0){
 
-    //le tableau n'est pas editable
-    @Override
-    public boolean isCellEditable(int i, int i1) {
-        return false;
-    }
+    public DefaultTableModel model = new DefaultTableModel(COLUMNS, 0) {
+
+        //le tableau n'est pas editable
+        @Override
+        public boolean isCellEditable(int i, int i1) {
+            return false;
+        }
 
     };
 
     protected JTable table = new JTable(model);
+
+
 
 
     public Tab_Contact_Display() {
@@ -33,7 +38,7 @@ class Tab_Contact_Display extends JPanel implements Serializable {
     }
 
 
-    protected void addRow(String Image,String Nom, String Prenom, String Numero) {
+    protected void addRow(String Image, String Nom, String Prenom, String Numero) {
         Object[] row = new Object[4];
         row[0] = Image;
         row[1] = Nom;
@@ -42,20 +47,28 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
         model.addRow(row);
         //serialization de la table contact
+
         try {
-            ObjectOutputStream Ecrire_fichier = new ObjectOutputStream(new FileOutputStream("C:/temp/Smartphone/contacts.txt"));
 
-            Ecrire_fichier.writeObject(row);
+            FileOutputStream fileOut = new FileOutputStream("C:/temp/Smartphone/contacts.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(model.getDataVector());
 
-            Ecrire_fichier.close();
+            //ObjectOutputStream Ecrire_fichier = new ObjectOutputStream(new FileOutputStream("C:/temp/Smartphone/contacts.txt"));
+
+            //Ecrire_fichier.writeObject(model.getDataVector());
+
+
+            //Ecrire_fichier.close();
 
 
         }catch (Exception e){
 
+            e.printStackTrace();
 
-        }
 
     }
 
+    }
 
 }
