@@ -15,6 +15,8 @@ public class Ecouteur_Contact extends MouseAdapter implements Serializable{
 
     public Ecouteur_Contact(Ecran ecran) {
 
+
+
     }
 
     public void mouseClicked(MouseEvent event) {

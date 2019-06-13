@@ -1,12 +1,12 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-class ButtonsContact extends JPanel{
-    private  JButton AnnulerContact = new JButton("Retour");
+ class ButtonsContact extends JPanel {
+
+    private JButton AnnulerContact = new JButton("Retour");
     private JButton addInfoButton = new JButton("Ajouter Contact");
     private JButton SupprimerContact = new JButton("Supprimer Contact");
     private JButton UpdateContact = new JButton("MàJ Contact");
-
 
 
 
