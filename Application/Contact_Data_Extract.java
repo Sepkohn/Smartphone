@@ -3,10 +3,10 @@ import java.awt.event.InputMethodEvent;
 
 class Contact_Data_Extract extends JPanel {
     // ce field pour image ne marche pas... (comme ça pas error lors du addRow)
-    private JTextField imagechamp = new JTextField(10);
-    private JTextField nomchamp = new JTextField(10);
-    private JTextField prenomchamp = new JTextField(10);
-    private JTextField numerochamp = new JTextField(15);
+    protected JTextField imagechamp = new JTextField(10);
+    protected JTextField nomchamp = new JTextField(10);
+    protected JTextField prenomchamp = new JTextField(10);
+    protected JTextField numerochamp = new JTextField(15);
 
 
     public Contact_Data_Extract() {
@@ -39,6 +39,8 @@ class Contact_Data_Extract extends JPanel {
     public String getNumero() {
         return numerochamp.getText();
     }
+
+
 
 
 

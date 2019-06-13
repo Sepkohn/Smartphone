@@ -10,7 +10,7 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
     }
 
-    private DefaultTableModel model = new DefaultTableModel(COLUMNS, 0){
+    protected DefaultTableModel model = new DefaultTableModel(COLUMNS, 0){
 
     //le tableau n'est pas editable
     @Override
@@ -19,12 +19,13 @@ class Tab_Contact_Display extends JPanel implements Serializable {
     }
 
 };
-    private JTable table = new JTable(model);
+    protected JTable table = new JTable(model);
 
 
     public Tab_Contact_Display() {
         setLayout(new BorderLayout());
         add(new JScrollPane(table));
+        //couleurs table...
         setBackground(Color.BLACK);
         setForeground(Color.WHITE);
 
@@ -39,16 +40,16 @@ class Tab_Contact_Display extends JPanel implements Serializable {
         row[3] = Numero;
 
         model.addRow(row);
-
+        //serialization de la table contact
         try {
-            ObjectOutputStream Ecrire_fichier = new ObjectOutputStream(new FileOutputStream("C:/temp/Smartphone/contacts.ser"));
+            ObjectOutputStream Ecrire_fichier = new ObjectOutputStream(new FileOutputStream("C:/temp/Smartphone/contacts.txt"));
 
             Ecrire_fichier.writeObject(row);
 
             Ecrire_fichier.close();
 
             //recover updated data (avec le tableau dispo)
-            ObjectInputStream Recover_File = new ObjectInputStream(new FileInputStream("C:/temp/Smartphone/contacts.ser"));
+            ObjectInputStream Recover_File = new ObjectInputStream(new FileInputStream("C:/temp/Smartphone/contacts.txt"));
 
             Tab_Contact_Display[] data_recover=(Tab_Contact_Display[]) Recover_File.readObject();
 
@@ -61,6 +62,8 @@ class Tab_Contact_Display extends JPanel implements Serializable {
 
 
         }
+
+
 
     }
 

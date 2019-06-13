@@ -22,4 +22,6 @@ public class PanelSeparator extends JPanel {
         g.drawLine(1, 0, 1, getHeight());
     }
 
+
+
 }
