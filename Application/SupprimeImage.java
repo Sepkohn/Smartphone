@@ -49,7 +49,7 @@ public class SupprimeImage extends JFrame implements Serializable{
 
                 Ecran_Galerie.tabLien = supprimeLiens(tabLien, link);
 
-                //Ecran_Galerie.tableau = supprimeImage(tableau, tabLien);
+
 
                 String[] serialisable = Ecran_Galerie.tabLien;
 

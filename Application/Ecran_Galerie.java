@@ -117,10 +117,6 @@ public class Ecran_Galerie extends JFrame implements Serializable{
 
 
             if (source == plus) {
-                /*AjoutImage nouveau = new AjoutImage();
-                nouveau.setVisible(true);
-                //nouveau.setLocation(.getLocation());
-                dispose();*/
 
                 JFileChooser search = new JFileChooser();
                 search.setSize(200,400);
@@ -160,11 +156,6 @@ public class Ecran_Galerie extends JFrame implements Serializable{
 
                 dispose();
             }
-
-            /*if(source==this.buton){
-
-            }*/
-
 
         }
 
@@ -227,46 +218,5 @@ public class Ecran_Galerie extends JFrame implements Serializable{
             System.out.println("erreur");
         }
     }
-
-    /*public String[] deserialisation () throws IOException, ClassNotFoundException {
-
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream("C:/temp/Smartphone/Images/save.ser");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("fichier pas trouvé");
-
-            return new JButton[0] ;
-        }
-
-        DataInputStream ds = new DataInputStream(fis);
-
-
-        String getLiens = new String();
-        while(ds.available()>0){
-            char c = ds.readChar();
-            getLiens +=c ;
-        }
-
-
-        String[] toString = new String[0];
-
-        if(getLiens!=null){
-            toString = getLiens.split(" ");
-        }
-
-        JButton[] tobutton = new JButton[0];
-
-        for(int i = 0; i<toString.length;i++){
-            JButton toString[i].getText() = new JButton();
-        }
-
-        ds.close();
-        fis.close();
-
-
-        return toString;
-    }*/
 
 }

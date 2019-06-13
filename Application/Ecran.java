@@ -100,7 +100,7 @@ public class Ecran extends JFrame {
 
     }
 
-    
+
 
    public String[] deserialisation () throws IOException, ClassNotFoundException {
 
