@@ -42,7 +42,7 @@ class Contact_Data_Extract extends JPanel {
                     JLabel champimage = new JLabel();
                     champimage.setIcon(new ImageIcon());
 
-                    
+
                 } else {
                     // annuler insértion image
                   search.setVisible(false);
