@@ -22,4 +22,22 @@ Valentin le 10.05.2019
  - Création d'un dossier pour les images.
  - Creation et suppression de la classe Galerie pour divers tests.
  - Test de création de méthodes d'ajouts d'image et de panel.
+
+ Valentin du 10.05 au 13.06.2019
+ - Développement de la partie galerie
+    - divers test
+    - serialisation
+    - création et suppression de plusieurs classes
+    - création d'une exception
+    - essai d'un test JUnit
+    - création du Smartphone.jar
+
+ Kevin du 10.05 au 13.06.2019
+ - Développement de la partie contact
+    - divers tests
+    - serialisation
+    - création d'un tableau Contact
+    - création et suppression de plusieurs classes
+    - création de la Javadoc
+
  
