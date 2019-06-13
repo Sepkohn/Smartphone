@@ -47,6 +47,7 @@ public class Ecran_Galerie extends JFrame implements Serializable {
         if (tabLien != null) {
             tableau = misAjour(tabLien);
         }
+        tabLien = supprimeLien(tabLien, "");
 
 
         center.removeAll();
@@ -56,34 +57,30 @@ public class Ecran_Galerie extends JFrame implements Serializable {
         int x = 0;
         int y = 0;
 
-            for (int i = 0; i < tableau.length; i++) {
-                JLabel label = new JLabel(tableau[i]);
-                //ImageIcon back = tableau[i];
-               // JButton image = new JButton(back);
+        for (int i = 0; i < tableau.length; i++) {
+            JLabel label = new JLabel(tableau[i]);
+            //ImageIcon back = tableau[i];
+            // JButton image = new JButton(back);
 
 
+            gbc.gridx = x;
+            gbc.gridy = y;
+            gbc.weightx = 0;
+            gbc.weighty = 0;
 
-                gbc.gridx = x;
-                gbc.gridy = y;
-                gbc.weightx = 0;
-                gbc.weighty = 0;
+            //center.add(label, gbc);
+            center.add(label, gbc);
 
-                //center.add(label, gbc);
-                center.add(label, gbc);
-
-               //center.add(buton, gbc);
+            //center.add(buton, gbc);
 
 
-                if (x == 2) {
-                    y += 1;
-                    x = 0;
-                } else {
-                    x += 1;
-                }
+            if (x == 2) {
+                y += 1;
+                x = 0;
+            } else {
+                x += 1;
             }
-
-
-
+        }
 
 
         north.add(plus);
@@ -129,7 +126,8 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                 search.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
 
 
-                int retour = search.showDialog(getParent(), "validate");
+                int retour = search.showDialog(null, "validate");
+
                 if (retour == JFileChooser.APPROVE_OPTION) {
                     File[] serieImage = search.getSelectedFiles();
                     for (int i = 0; i < serieImage.length; i++) {
@@ -144,6 +142,8 @@ public class Ecran_Galerie extends JFrame implements Serializable {
                     Ecran_Galerie miseAjour = new Ecran_Galerie();
 
                     miseAjour.setVisible(true);
+
+                    dispose();
                 }
 
 
@@ -151,9 +151,33 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
 
             if (source == moins) {
-                SupprimeImage enleve = new SupprimeImage();
-                enleve.setVisible(true);
-                dispose();
+
+
+                JFileChooser search = new JFileChooser();
+                search.setSize(200, 400);
+                search.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                search.setMultiSelectionEnabled(false);
+                search.setMaximumSize(new Dimension(400, 800));
+
+                search.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
+
+
+                int retour = search.showDialog(null, "validate");
+
+                if (retour == JFileChooser.APPROVE_OPTION) {
+
+                    tabLien = supprimeLiens(tabLien, search.getSelectedFile().getAbsolutePath());
+
+                    String[] serialisable = tabLien;
+
+                    serialisation(serialisable);
+
+                    Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+                    miseAjour.setVisible(true);
+
+                    dispose();
+                }
             }
             if (source == cancel) {
 
@@ -168,6 +192,7 @@ public class Ecran_Galerie extends JFrame implements Serializable {
 
 
     }
+
     public class Ecouteur_Image extends MouseAdapter {
 
         public Ecouteur_Image(Ecran_Galerie ecran) {
@@ -239,5 +264,84 @@ public class Ecran_Galerie extends JFrame implements Serializable {
         }
     }
 
+    public String[] supprimeLiens(String[] liens, String link) {
 
+        String[] newTab = new String[0];
+
+        int count = 0;
+
+        if (liens != null) {
+
+            for (int i = 0; i < liens.length && count != 1; i++) {
+
+                if (liens[i].equals(link)) {
+
+                    for (int j = i; j < liens.length - 1; j++) {
+                        liens[j] = liens[j + 1];
+
+                    }
+
+                    newTab = new String[liens.length - 1];
+                    for (int k = 0; k < newTab.length; k++) {
+                        newTab[k] = liens[k];
+
+                    }
+                    count++;
+
+                } else if (i == liens.length - 1) {
+
+                    JOptionPane.showMessageDialog(null, "Erreur : image non trouvée");
+                    setVisible(true);
+
+                    newTab = liens;
+                }
+            }
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Erreur : le tableau est vide!!");
+
+            newTab = liens;
+
+        }
+
+        return newTab;
+    }
+
+    public String[] supprimeLien(String[] liens, String link) {
+
+        String[] newTab = new String[0];
+
+        int count = 0;
+
+        if (liens != null) {
+
+            for (int i = 0; i < liens.length && count != 1; i++) {
+
+                if (liens[i].equals(link)) {
+
+                    for (int j = i; j < liens.length - 1; j++) {
+                        liens[j] = liens[j + 1];
+
+                    }
+
+                    newTab = new String[liens.length - 1];
+                    for (int k = 0; k < newTab.length; k++) {
+                        newTab[k] = liens[k];
+
+                    }
+                    count++;
+
+                    return newTab;
+
+
+
+                }
+            }
+        }
+
+            return liens;
+
+
+
+    }
 }
