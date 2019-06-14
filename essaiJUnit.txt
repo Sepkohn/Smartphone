@@ -1,0 +1,69 @@
+import org.junit.Test;
+import org.testng.annotations.ITestAnnotation;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class Ecran_GalerieTest {
+
+
+
+    @Test
+    void ajoutImage(String [] tabLien) {
+
+        String[] fin = new String [3];
+        fin[0] = ".jpg";
+        fin[1] = ".gif";
+        fin[2] = ".png";
+
+        JFileChooser search = new JFileChooser();
+        search.setSize(200, 400);
+        search.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        search.setMultiSelectionEnabled(true);
+        search.setMaximumSize(new Dimension(400, 800));
+
+        search.setCurrentDirectory(new File("C:/temp/Smartphone/Images"));
+
+
+        int retour = search.showDialog(null, "validate");
+
+        if (retour == JFileChooser.APPROVE_OPTION) {
+            File[] serieImage = search.getSelectedFiles();
+            for (int i = 0; i < serieImage.length; i++) {
+                for(int j;j<fin.length;j++) {
+                    if (serieImage[i].getAbsolutepath().equals(fin[j])){
+                        
+                    }
+                }
+
+                tabLien = ajoutLien(tabLien, serieImage[i].getAbsolutePath());
+            }
+            Ecran_Galerie.tabLien = tabLien;
+
+            String[] serialisable = tabLien;
+
+
+            Ecran_Galerie miseAjour = new Ecran_Galerie();
+
+            miseAjour.setVisible(true);
+
+        }
+    }
+    }
+    public String[] ajoutLien(String[] tableau, String lien) {
+
+        String[] tableau2 = new String[tableau.length + 1];
+
+        for (int i = 0; i < tableau.length; i++) {
+            tableau2[i] = tableau[i];
+        }
+        tableau2[tableau2.length - 1] = lien;
+
+        return tableau2;
+    }
+
+
+}
