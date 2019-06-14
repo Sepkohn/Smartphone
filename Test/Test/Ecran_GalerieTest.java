@@ -6,10 +6,17 @@ import org.junit.Test;
 public class Ecran_GalerieTest {
 
     @After
-    public void tearDown() throws Exception {
+    void tearDown() throws Exception {
+
+
+
+
     }
 
     @Test
-    public void misAjour() {
+    void misAjour() {
+
+
+
     }
 }
